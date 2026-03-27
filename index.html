@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgentScript — Scripting in the Agentic Era</title>
+<meta name="description" content="AgentScript connects AI, APIs, and your tools into powerful automation pipelines. Research, generate media, fill forms, monitor infrastructure, and deploy — all from readable scripts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.9/babel.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--bg:#08080a;--bg2:#0f0f12;--bg3:#17171c;--bg4:#1e1e24;
+--text:#eae8e4;--text-dim:#7c7c82;--text-mid:#a8a8ae;
+--accent:#c4f042;--accent2:#42f0c4;--accent3:#f0a842;
+--accent-dim:rgba(196,240,66,0.08);--accent-glow:rgba(196,240,66,0.12);
+--border:rgba(255,255,255,0.06);
+--mono:'JetBrains Mono',monospace;--sans:'DM Sans',sans-serif;--display:'Playfair Display',serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
+::selection{background:var(--accent);color:var(--bg)}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg3);border-radius:3px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(44px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes glow{0%,100%{opacity:.3}50%{opacity:.7}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(196,240,66,.3)}50%{box-shadow:0 0 0 8px rgba(196,240,66,0)}}
+.container{max-width:1140px;margin:0 auto;padding:0 28px}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;background:rgba(8,8,10,.75);backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border);transition:all .3s}
+nav.scrolled{padding:12px 0;background:rgba(8,8,10,.92)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1140px;margin:0 auto;padding:0 28px}
+.nav-logo{font-family:var(--mono);font-weight:500;font-size:18px;color:var(--text);text-decoration:none;letter-spacing:-.5px}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--text-dim);text-decoration:none;font-size:14px;font-weight:400;transition:color .2s;letter-spacing:.2px}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--accent)!important;color:var(--bg)!important;padding:8px 20px!important;border-radius:6px;font-weight:600!important;font-size:13px!important;letter-spacing:.3px;transition:transform .2s,box-shadow .2s!important}
+.nav-cta:hover{transform:translateY(-1px)!important;box-shadow:0 4px 20px rgba(196,240,66,.25)!important}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:120px 0 80px}
+.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;filter:blur(160px);pointer-events:none;animation:glow 6s ease-in-out infinite}
+.hero-glow-1{top:-200px;right:-150px;background:rgba(196,240,66,.06)}
+.hero-glow-2{bottom:-200px;left:-200px;background:rgba(66,240,196,.04)}
+.hero-content{position:relative;z-index:1;max-width:780px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 8px;background:var(--accent-dim);border:1px solid rgba(196,240,66,.15);border-radius:100px;font-size:12px;font-weight:500;color:var(--accent);letter-spacing:.5px;text-transform:uppercase;margin-bottom:28px;opacity:0;animation:fadeUp .7s .2s ease-out forwards}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+.hero h1{font-family:var(--display);font-size:clamp(48px,7vw,82px);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:24px;opacity:0;animation:fadeUp .8s .3s ease-out forwards}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:19px;color:var(--text-dim);max-width:580px;line-height:1.7;margin-bottom:40px;opacity:0;animation:fadeUp .8s .45s ease-out forwards}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .55s ease-out forwards}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--accent);color:var(--bg);border:none;border-radius:8px;font-size:15px;font-weight:600;font-family:var(--sans);cursor:pointer;text-decoration:none;transition:all .25s;letter-spacing:.2px}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(196,240,66,.3)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:8px;font-size:15px;font-weight:500;font-family:var(--sans);cursor:pointer;text-decoration:none;transition:all .25s}
+.btn-secondary:hover{border-color:rgba(255,255,255,.15);background:var(--bg3)}
+
+/* TERMINAL */
+.hero-terminal{margin-top:64px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden;opacity:0;animation:fadeUp .9s .7s ease-out forwards}
+.terminal-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;background:var(--bg3);border-bottom:1px solid var(--border)}
+.terminal-dot{width:10px;height:10px;border-radius:50%}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.terminal-title{flex:1;text-align:center;font-family:var(--mono);font-size:11px;color:var(--text-dim)}
+.terminal-body{padding:24px;font-family:var(--mono);font-size:12.5px;line-height:1.9;overflow-x:auto}
+.t-prompt{color:var(--accent);user-select:none}.t-cmd{color:var(--text)}.t-cmt{color:var(--text-dim);font-style:italic}.t-out{color:var(--accent2);padding-left:20px}.t-dim{color:var(--text-dim)}.t-kw{color:var(--accent)}.t-str{color:var(--accent2)}.t-op{color:var(--accent3)}
+
+/* SECTIONS */
+section{padding:120px 0;position:relative}
+.section-label{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.section-title{font-family:var(--display);font-size:clamp(32px,4.5vw,52px);font-weight:800;line-height:1.12;letter-spacing:-1.5px;margin-bottom:20px}
+.section-sub{font-size:17px;color:var(--text-dim);max-width:580px;line-height:1.7}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+
+/* SHOWCASES */
+.showcase-grid{display:flex;flex-direction:column;gap:80px;margin-top:64px}
+.showcase-item{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.showcase-item:nth-child(even){direction:rtl}.showcase-item:nth-child(even)>*{direction:ltr}
+.showcase-text h3{font-size:24px;font-weight:700;margin-bottom:12px;letter-spacing:-.5px}
+.showcase-text p{font-size:15px;color:var(--text-dim);line-height:1.7;margin-bottom:16px}
+.showcase-tag{display:inline-block;padding:4px 10px;background:var(--accent-dim);border:1px solid rgba(196,240,66,.12);border-radius:100px;font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:500;margin-right:6px;margin-bottom:6px}
+.showcase-code{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:20px;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--text-mid);overflow-x:auto;white-space:pre}
+.showcase-code .k{color:var(--accent)}.showcase-code .s{color:var(--accent2)}.showcase-code .o{color:var(--accent3)}.showcase-code .c{color:var(--text-dim)}
+
+/* HOW IT WORKS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px;counter-reset:step}
+.step{position:relative;padding-top:48px}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;top:0;left:0;font-family:var(--display);font-size:36px;font-weight:800;color:var(--accent);opacity:.25}
+.step h3{font-size:18px;font-weight:600;margin-bottom:10px;letter-spacing:-.3px}
+.step p{font-size:14px;color:var(--text-dim);line-height:1.65}
+
+/* INTEGRATIONS */
+.integrations-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.int-pill{display:inline-flex;align-items:center;gap:7px;padding:9px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:100px;font-size:13px;font-weight:500;color:var(--text-mid);transition:all .25s}
+.int-pill:hover{border-color:rgba(196,240,66,.2);color:var(--text);background:var(--bg3)}
+.int-pill span{font-size:15px}
+
+/* DOWNLOADS */
+.downloads-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:48px}
+.dl-card{display:flex;align-items:center;gap:18px;padding:24px 28px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;text-decoration:none;transition:all .3s;cursor:pointer}
+.dl-card:hover{border-color:rgba(196,240,66,.15);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.dl-icon{width:48px;height:48px;display:flex;align-items:center;justify-content:center;background:var(--bg3);border:1px solid var(--border);border-radius:10px;font-size:22px;flex-shrink:0}
+.dl-info h4{font-size:15px;font-weight:600;color:var(--text);margin-bottom:3px}
+.dl-info p{font-size:12px;color:var(--text-dim)}
+.dl-tag{margin-left:auto;padding:4px 10px;background:var(--accent-dim);border:1px solid rgba(196,240,66,.12);border-radius:100px;font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:500;flex-shrink:0}
+.dl-note{margin-top:24px;padding:16px 20px;background:var(--bg2);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;font-size:13px;color:var(--text-dim);line-height:1.6}
+.dl-note strong{color:var(--text)}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:56px}
+.price-card{padding:40px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;transition:all .3s;position:relative}
+.price-card.featured{border-color:rgba(196,240,66,.25);background:linear-gradient(180deg,rgba(196,240,66,.04),var(--bg2))}
+.price-card.featured::before{content:'Most Popular';position:absolute;top:-12px;left:50%;transform:translateX(-50%);padding:4px 16px;background:var(--accent);color:var(--bg);font-size:11px;font-weight:600;border-radius:100px;letter-spacing:.5px;text-transform:uppercase}
+.price-tier{font-size:13px;font-weight:600;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:12px}
+.price-amt{font-family:var(--display);font-size:48px;font-weight:800;letter-spacing:-2px;margin-bottom:4px}
+.price-amt span{font-family:var(--sans);font-size:16px;font-weight:400;color:var(--text-dim);letter-spacing:0}
+.price-desc{font-size:14px;color:var(--text-dim);margin-bottom:28px;line-height:1.6}
+.price-features{list-style:none;margin-bottom:32px}
+.price-features li{padding:8px 0;font-size:14px;color:var(--text-mid);display:flex;align-items:center;gap:10px}
+.price-features li::before{content:'✓';color:var(--accent);font-weight:700;font-size:13px}
+.price-btn{display:block;width:100%;padding:14px;text-align:center;border-radius:8px;font-size:14px;font-weight:600;font-family:var(--sans);cursor:pointer;text-decoration:none;transition:all .25s;border:none}
+.price-btn-p{background:var(--accent);color:var(--bg)}
+.price-btn-p:hover{box-shadow:0 6px 24px rgba(196,240,66,.3);transform:translateY(-2px)}
+.price-btn-s{background:transparent;color:var(--text);border:1px solid var(--border)}
+.price-btn-s:hover{border-color:rgba(255,255,255,.15);background:var(--bg3)}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:56px}
+.contact-info h3{font-size:20px;font-weight:600;margin-bottom:16px}
+.contact-info p{font-size:15px;color:var(--text-dim);line-height:1.7;margin-bottom:28px}
+.contact-detail{display:flex;align-items:center;gap:12px;padding:14px 0;border-top:1px solid var(--border);font-size:14px}
+.contact-detail-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;background:var(--bg3);border-radius:8px;font-size:16px;flex-shrink:0}
+.contact-detail a{color:var(--text);text-decoration:none;transition:color .2s}
+.contact-detail a:hover{color:var(--accent)}
+.contact-form{display:flex;flex-direction:column;gap:16px}
+.form-row{display:flex;gap:16px}
+.form-group{flex:1;display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:12px;font-weight:500;color:var(--text-dim);letter-spacing:.5px;text-transform:uppercase}
+.form-group input,.form-group textarea,.form-group select{padding:12px 16px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:var(--sans);font-size:14px;transition:border-color .2s;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:rgba(196,240,66,.3)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-group select{cursor:pointer}.form-group select option{background:var(--bg2)}
+
+/* FOOTER */
+footer{padding:48px 0;border-top:1px solid var(--border)}
+.footer-inner{display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:13px;color:var(--text-dim)}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:13px;color:var(--text-dim);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--text)}
+
+/* MCP ECOSYSTEM */
+.mcp-hero{position:relative;overflow:hidden}
+.mcp-hero .hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(140px);pointer-events:none}
+.mcp-glow-1{top:-100px;left:-100px;background:rgba(66,240,196,.07)}
+.mcp-glow-2{bottom:-100px;right:-100px;background:rgba(196,240,66,.05)}
+.mcp-stat-row{display:flex;gap:20px;margin-top:48px;flex-wrap:wrap}
+.mcp-stat{flex:1;min-width:200px;padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:12px;text-align:center}
+.mcp-stat-num{font-family:var(--display);font-size:42px;font-weight:800;letter-spacing:-2px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.mcp-stat-label{font-size:13px;color:var(--text-dim);margin-top:4px}
+.mcp-diagram{margin-top:56px;padding:36px;background:var(--bg);border:1px solid var(--border);border-radius:14px;text-align:center}
+.mcp-diagram-title{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-bottom:24px}
+.mcp-flow{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;font-family:var(--mono);font-size:13px}
+.mcp-flow-box{padding:12px 20px;border-radius:10px;border:1px solid var(--border)}
+.mcp-flow-servers{background:linear-gradient(135deg,rgba(66,240,196,.08),rgba(66,240,196,.02));border-color:rgba(66,240,196,.2);color:var(--accent2)}
+.mcp-flow-agent{background:linear-gradient(135deg,rgba(196,240,66,.12),rgba(196,240,66,.03));border-color:rgba(196,240,66,.25);color:var(--accent);font-weight:600;padding:16px 28px;font-size:15px}
+.mcp-flow-outputs{background:linear-gradient(135deg,rgba(240,168,66,.08),rgba(240,168,66,.02));border-color:rgba(240,168,66,.2);color:var(--accent3)}
+.mcp-flow-arrow{color:var(--text-dim);font-size:18px}
+.mcp-examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:20px;margin-top:48px}
+.mcp-card{padding:28px;background:var(--bg);border:1px solid var(--border);border-radius:12px;transition:all .3s}
+.mcp-card:hover{border-color:rgba(66,240,196,.15);transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.3)}
+.mcp-card-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.mcp-card-icon{width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(66,240,196,.08);border:1px solid rgba(66,240,196,.15);border-radius:9px;font-size:18px}
+.mcp-card h4{font-size:16px;font-weight:600}
+.mcp-card p{font-size:13px;color:var(--text-dim);line-height:1.6;margin-bottom:14px}
+.mcp-card-code{padding:14px;background:var(--bg2);border:1px solid var(--border);border-radius:8px;font-family:var(--mono);font-size:11.5px;line-height:1.7;color:var(--text-mid);overflow-x:auto;white-space:pre}
+.mcp-card-code .k{color:var(--accent)}.mcp-card-code .s{color:var(--accent2)}.mcp-card-code .o{color:var(--accent3)}.mcp-card-code .c{color:var(--text-dim)}
+.mcp-cta{margin-top:48px;padding:32px;background:linear-gradient(135deg,rgba(66,240,196,.06),rgba(196,240,66,.04));border:1px solid rgba(66,240,196,.12);border-radius:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.mcp-cta-text h3{font-size:20px;font-weight:700;margin-bottom:6px}.mcp-cta-text p{font-size:14px;color:var(--text-dim)}
+.mcp-cta-code{font-family:var(--mono);font-size:13px;padding:12px 20px;background:var(--bg);border:1px solid var(--border);border-radius:8px;color:var(--accent2)}
+
+@media(max-width:768px){
+.nav-links{display:none}.steps{grid-template-columns:1fr;gap:28px}
+.contact-grid{grid-template-columns:1fr;gap:40px}.form-row{flex-direction:column}
+.footer-inner{flex-direction:column;gap:16px;text-align:center}
+.pricing-grid{grid-template-columns:1fr}section{padding:80px 0}
+.showcase-item,.showcase-item:nth-child(even){grid-template-columns:1fr;direction:ltr}
+.mcp-examples{grid-template-columns:1fr}
+.mcp-flow{flex-direction:column}
+.mcp-cta{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const{useState,useEffect}=React;
+
+function Nav(){
+  const[s,setS]=useState(false);
+  useEffect(()=>{const f=()=>setS(window.scrollY>40);window.addEventListener('scroll',f);return()=>window.removeEventListener('scroll',f)},[]);
+  return <nav className={s?'scrolled':''}><div className="nav-inner">
+    <a href="#" className="nav-logo">agent<span>script</span></a>
+    <div className="nav-links">
+      <a href="#showcases">Use Cases</a>
+      <a href="#mcp">MCP Agents</a>
+      <a href="#how">How It Works</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#download">Download</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact" className="nav-cta">Get in Touch</a>
+    </div>
+  </div></nav>;
+}
+
+function Hero(){
+  return <section className="hero">
+    <div className="hero-glow hero-glow-1"/><div className="hero-glow hero-glow-2"/>
+    <div className="container"><div className="hero-content">
+      <div className="hero-badge"><span className="hero-badge-dot"/>Available for macOS, Linux &amp; Windows</div>
+      <h1>Scripting in the<br/><em>agentic era.</em></h1>
+      <p className="hero-sub">
+        AgentScript is a powerful scripting language that connects AI, APIs, and your entire
+        toolkit into automation pipelines. From multi-step research to video production
+        to infrastructure monitoring — write scripts that do what used to take entire teams.
+      </p>
+      <div className="hero-actions">
+        <a href="#download" className="btn-primary">↓ Download Free Trial</a>
+        <a href="#showcases" className="btn-secondary">See Real Examples →</a>
+      </div>
+    </div>
+    <div className="hero-terminal"><div className="terminal-bar">
+      <span className="terminal-dot dot-r"/><span className="terminal-dot dot-y"/><span className="terminal-dot dot-g"/>
+      <span className="terminal-title">daily-briefing.as</span><span/>
+    </div><div className="terminal-body">
+      {[
+        {t:'<span class="t-cmt">// Morning briefing — weather, markets, news, jobs</span>'},
+        {t:'( <span class="t-kw">weather</span> <span class="t-str">"San Francisco"</span>'},
+        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">crypto</span> <span class="t-str">"BTC,ETH,SOL"</span>'},
+        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">stock</span> <span class="t-str">"AAPL,GOOGL,NVDA"</span>'},
+        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">news_headlines</span> <span class="t-str">"technology"</span>'},
+        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">rss</span> <span class="t-str">"hn"</span>'},
+        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">reddit</span> <span class="t-str">"r/golang"</span> <span class="t-str">"top"</span>'},
+        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">job_search</span> <span class="t-str">"golang contract"</span> <span class="t-str">"remote"</span>'},
+        {t:')'},
+        {t:'<span class="t-op">&gt;=&gt;</span> <span class="t-kw">merge</span>'},
+        {t:'<span class="t-op">&gt;=&gt;</span> <span class="t-kw">ask</span> <span class="t-str">"Professional morning briefing"</span>'},
+        {t:'<span class="t-op">&gt;=&gt;</span> <span class="t-kw">notify</span> <span class="t-str">"slack"</span>'},
+      ].map((l,i)=><div key={i} style={{opacity:0,animation:`fadeUp .4s ${.9+i*.08}s ease-out forwards`}} dangerouslySetInnerHTML={{__html:l.t}}/>)}
+    </div></div>
+    </div>
+  </section>;
+}
+
+function Showcases(){
+  const items=[
+    {
+      title:'YouTube Shorts Factory',
+      desc:'Generate narration with AI text-to-speech, create images with Imagen, stitch them into video, merge audio, and upload to YouTube Shorts — all in one script. Full video production pipeline, zero manual editing.',
+      tags:['AI Video','Text-to-Speech','Imagen','YouTube Upload'],
+      code:`( ( ask "write a 30 second narration about\n    why butterflies are amazing"\n    >=> text_to_speech "Kore"\n    >=> save "narration.wav"\n  )\n  <*> ( ( image_generate "monarch butterfly close up"\n          <*> image_generate "butterflies in sunlit garden"\n        )\n        >=> merge\n        >=> images_to_video "butterfly1.png butterfly2.png"\n      )\n)\n>=> merge\n>=> audio_video_merge "butterfly_shorts.mp4"\n>=> youtube_shorts "Amazing Butterflies"`
+    },
+    {
+      title:'AI-Powered PDF Form Filling',
+      desc:'Point AgentScript at any PDF form and a text file with your data. AI reads every field, intelligently maps your data, and fills the entire form automatically. Tax forms, applications, onboarding packets — done in seconds.',
+      tags:['PDF Forms','AI Mapping','Gemini','Automation'],
+      code:`// Inspect what a form needs\npdf_fields "tax-form.pdf"\n>=> ask "what data does this form require?"\n\n// Fill it from any data source\nread "client-data.txt"\n>=> pdf_fill "tax-form.pdf"\n\n// Or gather data and fill in parallel\n( read "client-info.txt"\n  <*> pdf_fields "application.pdf"\n)\n>=> merge\n>=> pdf_fill "application.pdf"`
+    },
+    {
+      title:'Full-Stack App Scaffolding via GitHub',
+      desc:'Connect to GitHub via MCP, create a repository, and push an entire Vite + React project — package.json, components, config — all files created in parallel. Ship a working app without touching a browser.',
+      tags:['GitHub MCP','React','Vite','Parallel Deploy'],
+      code:`mcp_connect "github" "npx -y @mcp/server-github"\n>=> mcp "github:create_repository"\n    '{"name": "hello-vite"}'\n>=> ( mcp "github:create_or_update_file"\n       '{"path": "package.json", ...}'\n     <*> mcp "github:create_or_update_file"\n          '{"path": "src/App.jsx", ...}'\n     <*> mcp "github:create_or_update_file"\n          '{"path": "index.html", ...}'\n   )\n>=> merge\n>=> email "team@company.com"`
+    },
+    {
+      title:'Network Health Dashboard',
+      desc:'Scan a dozen sites in parallel — SSL certificates, ping latency, HTTP status, DNS records — merge the telemetry, have AI parse it into structured JSON, render an interactive HTML dashboard, and alert Slack if anything is degraded.',
+      tags:['SSL','Ping','DNS','Dashboard','Slack Alerts'],
+      code:`(\n  pfmap "ssl_check"  "github.com,google.com,stripe.com"\n  <*> pfmap "ping"   "github.com,google.com,stripe.com"\n  <*> pfmap "http_check"\n      "https://github.com,https://google.com"\n)\n>=> merge\n>=> claude "Parse into JSON with health status"\n>=> save "network-data.json"\n\nread "network-data.json"\n>=> match\n  | contains "DOWN"     >=> notify "slack"\n  | contains "DEGRADED" >=> notify "slack"\n  | _                   >=> ask "All systems healthy"`
+    },
+    {
+      title:'Smart Home + Security',
+      desc:'Connect to Home Assistant via MCP and control every device in your house — lights, alarms, sensors. Get Ring doorbell alerts, arm your security system, check battery levels, and trigger automations from simple scripts.',
+      tags:['Home Assistant','Ring','MCP','IoT'],
+      code:`// Turn on lights with color\nmcp_connect "ha" "npx -y @ha/mcp@latest"\n>=> mcp_agent "ha" "lights_control turn_on\n    light.living_room brightness 255\n    rgb_color 255 0 0"\n\n// Check Ring doorbell status\nmcp_agent "ha" "get state of\n    event.front_door_motion,\n    sensor.front_door_battery"\n>=> ask "Summarize Ring status"\n>=> save "ring-status.md"\n\n// Arm security\nmcp_agent "ha" "arm alarm_control_panel\n    in home mode with code 7111"`
+    },
+    {
+      title:'Multi-Source Research & Reports',
+      desc:'Pull from web search, RSS feeds, Reddit, Hacker News, news APIs, and Perplexity AI — all in parallel. Merge, analyze, and push the output to Google Docs, Sheets, email, and Slack simultaneously.',
+      tags:['Research','Perplexity','Google Docs','Multi-Channel'],
+      code:`(\n  perplexity_recent "Go language news" "week"\n  <*> perplexity_recent "AI agents" "week"\n  <*> stock "NVDA,MSFT,GOOG"\n  <*> rss "hn"\n  <*> reddit "r/golang"\n)\n>=> merge\n>=> ask "CTO morning briefing: key\n    developments, what matters, what to watch"\n>=> (\n  doc_create "Weekly Tech Brief"\n  <*> email "team@company.com"\n  <*> notify "slack"\n)`
+    },
+    {
+      title:'Quorum Code Review — 3 AIs Debate Your Code',
+      desc:'Feed source code to Claude, Gemini, and GPT-4 simultaneously. They review it independently, then debate each other across multiple rounds. A moderator synthesizes a final verdict. Like having three senior engineers review every PR.',
+      tags:['Claude','Gemini','GPT-4','Multi-Round Debate','Code Quality'],
+      code:`// Three AI models review your code\nread "pkg/agent/agent.go"\n>=> codereview "3"\n\n// Focused review on a specific concern\nread "main.go"\n>=> codereview_focus "error handling" "2"\n\n// Review + auto-create GitHub issue\nmcp_connect "github" "npx -y @mcp/server-github"\n>=> read "pkg/agent/agent.go"\n>=> codereview_focus "security" "3"\n>=> mcp_agent "github" "create an issue in\n    my-org/my-repo with the findings"`
+    },
+  ];
+  return <section id="showcases">
+    <div className="container">
+      <div className="section-label">Real Examples</div>
+      <div className="section-title">See what people are building.</div>
+      <p className="section-sub">These are actual AgentScript pipelines — multi-step automations that replace hours of manual work.</p>
+      <div className="showcase-grid">
+        {items.map((item,i)=><div className="showcase-item" key={i}>
+          <div className="showcase-text">
+            <h3>{item.title}</h3>
+            <p>{item.desc}</p>
+            <div>{item.tags.map((t,j)=><span className="showcase-tag" key={j}>{t}</span>)}</div>
+          </div>
+          <div className="showcase-code" dangerouslySetInnerHTML={{__html:
+            item.code
+              .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+              .replace(/(\/\/[^\n]*)/g,'\x01$1\x02')
+              .replace(/("(?:[^"\\]|\\.)*")/g,'\x03$1\x04')
+              .replace(/(&gt;=&gt;|&lt;\*&gt;)/g,'\x05$1\x06')
+              .replace(/\b(search|summarize|ask|analyze|save|read|merge|email|notify|pdf_fields|pdf_fill|weather|crypto|stock|news_headlines|rss|reddit|job_search|image_generate|text_to_speech|images_to_video|audio_video_merge|youtube_shorts|youtube_upload|mcp_connect|mcp_agent|mcp|pfmap|claude|match|contains|doc_create|calendar|maps_trip|places_search|translate|perplexity_recent|form_create|sheet_create|task|contact_find|drive_save|video_generate|video_script|codereview|codereview_focus)\b/g,'<span class="k">$1</span>')
+              .replace(/\x01([\s\S]*?)\x02/g,'<span class="c">$1</span>')
+              .replace(/\x03([\s\S]*?)\x04/g,'<span class="s">$1</span>')
+              .replace(/\x05([\s\S]*?)\x06/g,'<span class="o">$1</span>')
+          }}/>
+        </div>)}
+      </div>
+    </div>
+  </section>;
+}
+
+function MCPEcosystem(){
+  const examples=[
+    {
+      icon:'🏘️',title:'Airbnb + Google Maps',
+      desc:'Search Airbnb listings, filter by price, and plot every option on a Google Maps trip — two MCP servers working together.',
+      code:`mcp_connect "airbnb" "npx -y @openbnb/mcp-server-airbnb"\nmcp_connect "maps" "npx -y @mcp/server-google-maps"\n>=> mcp_agent "airbnb" "search stays in\n    New York Apr 10-15 under $300/night"\n>=> maps_trip "NYC Airbnb Options"`
+    },
+    {
+      icon:'🗄️',title:'SQLite → Maps → Slack',
+      desc:'Query your customer database, geocode addresses, compute an optimal sales road trip, and push the route to Slack.',
+      code:`mcp_connect "db" "npx -y @mcp/server-sqlite\n    customers.db"\nmcp_connect "maps" "npx -y @mcp/server-google-maps"\n>=> mcp_agent "db" "get all customer names,\n    addresses, cities from customers table"\n>=> ask "optimal 3-day sales road trip"\n>=> maps_trip "Sales Road Trip"`
+    },
+    {
+      icon:'🎬',title:'YouTube Transcript Research',
+      desc:'Pull transcripts from YouTube talks via MCP, cross-reference with Perplexity AI trends, and synthesize learning recommendations.',
+      code:`mcp_connect "yt" "npx -y yt-mcp"\n>=> (\n  mcp_agent "yt" "get transcript of the most\n      viewed Go conference talk this year"\n  <*> perplexity_recent "Go trends 2026" "month"\n)\n>=> merge\n>=> ask "What should I learn based on\n    conference talks and current trends?"\n>=> email "me@company.com"`
+    },
+    {
+      icon:'📂',title:'Filesystem → Docs → Email',
+      desc:'Read source code from your local filesystem via MCP, auto-generate documentation with AI, save to Google Docs, and email the team.',
+      code:`mcp_connect "fs" "npx -y @mcp/server-filesystem ."\n>=> mcp "fs:read_file" '{"path": "main.go"}'\n>=> ask "Document this codebase"\n>=> doc_create "Code Documentation"\n>=> email "team@company.com"`
+    },
+    {
+      icon:'📊',title:'HuggingFace Sentiment + Stocks',
+      desc:'Run financial news through HuggingFace FinBERT for real-time sentiment classification, combine with live stock data for AI-powered trade analysis.',
+      code:`( stock "NVDA"\n  <*> news "NVIDIA earnings AI"\n     >=> hf_classify "ProsusAI/finbert"\n)\n>=> merge\n>=> ask "Analyze NVIDIA: combine price\n    data with news sentiment scores"\n>=> save "nvda-analysis.md"`
+    },
+    {
+      icon:'🏠',title:'Home Assistant IoT Control',
+      desc:'Connect to your entire smart home. Control lights, arm security systems, check Ring doorbells, query device history — from a script.',
+      code:`mcp_connect "ha" "npx -y @ha/mcp@latest"\n>=> mcp_agent "ha" "turn_on light.living_room\n    brightness 255 rgb_color 0 255 100"\n\n// Check Ring motion history\nmcp_agent "ha" "get_history for\n    sensor.front_door_last_activity"\n>=> ask "Write a security alert"\n>=> notify "slack"`
+    },
+    {
+      icon:'🐙',title:'GitHub Code Review → Issues',
+      desc:'Read source code via MCP, run a focused code review with AI, and automatically create GitHub issues with the findings.',
+      code:`mcp_connect "github" "npx -y @mcp/server-github"\n>=> read "pkg/agent/agent.go"\n>=> codereview_focus "error handling" "2"\n>=> mcp_agent "github" "create an issue in\n    my-org/my-repo with the code review\n    findings as the body"`
+    },
+    {
+      icon:'🔍',title:'Discover + Install Any MCP Server',
+      desc:'Search the official MCP registry for any capability you need — databases, APIs, services. AgentScript finds it and gives you the connect command.',
+      code:`// Find MCP servers for any use case\nmcp_search "home automation"\nmcp_search "postgres database"\nmcp_search "slack integration"\nmcp_search "kubernetes"\n\n// Get the install command instantly\nmcp_search_install "server-name"\n// → mcp_connect "name" "npx -y ..."`
+    },
+  ];
+  function hl(code){
+    return code
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+      .replace(/(\/\/[^\n]*)/g,'\x01$1\x02')
+      .replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g,'\x03$1\x04')
+      .replace(/(&gt;=&gt;|&lt;\*&gt;)/g,'\x05$1\x06')
+      .replace(/\b(mcp_connect|mcp_agent|mcp_search_install|mcp_search|mcp|search|summarize|ask|analyze|save|read|merge|email|notify|stock|news|hf_classify|hf_generate|hf_summarize|hf_ner|hf_translate|hf_qa|hf_zero_shot|perplexity_recent|maps_trip|doc_create|codereview_focus|codereview|pdf_fill|pdf_fields)\b/g,'<span class="k">$1</span>')
+      .replace(/\x01([\s\S]*?)\x02/g,'<span class="c">$1</span>')
+      .replace(/\x03([\s\S]*?)\x04/g,'<span class="s">$1</span>')
+      .replace(/\x05([\s\S]*?)\x06/g,'<span class="o">$1</span>');
+  }
+  return <section id="mcp" className="mcp-hero" style={{background:'var(--bg2)'}}>
+    <div className="mcp-glow-1 hero-glow"/><div className="mcp-glow-2 hero-glow"/>
+    <div className="container" style={{position:'relative',zIndex:1}}>
+      <div className="section-label">The MCP Ecosystem</div>
+      <div className="section-title">Tens of thousands of<br/>servers. One composition layer.</div>
+      <p className="section-sub" style={{maxWidth:640}}>
+        The Model Context Protocol is an open standard with a rapidly
+        growing ecosystem of community-built servers — databases, APIs,
+        smart home devices, cloud services, developer tools, and more.
+        AgentScript is the composition layer that connects them all.
+        Plug in any MCP server with a single line, then orchestrate
+        it alongside AI, Google Workspace, notifications, and every
+        other AgentScript command.
+      </p>
+
+      <div className="mcp-stat-row">
+        <div className="mcp-stat"><div className="mcp-stat-num">10,000+</div><div className="mcp-stat-label">MCP Servers Available</div></div>
+        <div className="mcp-stat"><div className="mcp-stat-num">1 line</div><div className="mcp-stat-label">To Connect Any Server</div></div>
+        <div className="mcp-stat"><div className="mcp-stat-num">∞</div><div className="mcp-stat-label">Composition Possibilities</div></div>
+      </div>
+
+      <div className="mcp-diagram">
+        <div className="mcp-diagram-title">How It Works</div>
+        <div className="mcp-flow">
+          <div style={{display:'flex',flexDirection:'column',gap:8}}>
+            <div className="mcp-flow-box mcp-flow-servers">🗄️ SQLite</div>
+            <div className="mcp-flow-box mcp-flow-servers">🐙 GitHub</div>
+            <div className="mcp-flow-box mcp-flow-servers">🗺️ Google Maps</div>
+            <div className="mcp-flow-box mcp-flow-servers">🏘️ Airbnb</div>
+            <div className="mcp-flow-box mcp-flow-servers">🏠 Home Assistant</div>
+            <div className="mcp-flow-box mcp-flow-servers">📂 Filesystem</div>
+          </div>
+          <div className="mcp-flow-arrow">→</div>
+          <div className="mcp-flow-box mcp-flow-agent">AgentScript</div>
+          <div className="mcp-flow-arrow">→</div>
+          <div style={{display:'flex',flexDirection:'column',gap:8}}>
+            <div className="mcp-flow-box mcp-flow-outputs">📧 Email</div>
+            <div className="mcp-flow-box mcp-flow-outputs">💬 Slack</div>
+            <div className="mcp-flow-box mcp-flow-outputs">📝 Google Docs</div>
+            <div className="mcp-flow-box mcp-flow-outputs">🗺️ Maps / Trips</div>
+            <div className="mcp-flow-box mcp-flow-outputs">📊 Dashboards</div>
+            <div className="mcp-flow-box mcp-flow-outputs">🎬 YouTube</div>
+          </div>
+        </div>
+      </div>
+
+      <div className="mcp-examples">
+        {examples.map((ex,i)=><div className="mcp-card" key={i}>
+          <div className="mcp-card-header">
+            <div className="mcp-card-icon">{ex.icon}</div>
+            <h4>{ex.title}</h4>
+          </div>
+          <p>{ex.desc}</p>
+          <div className="mcp-card-code" dangerouslySetInnerHTML={{__html:hl(ex.code)}}/>
+        </div>)}
+      </div>
+
+      <div className="mcp-cta" style={{flexDirection:'column',gap:28,textAlign:'center'}}>
+        <div className="mcp-cta-text" style={{maxWidth:640,margin:'0 auto'}}>
+          <h3 style={{fontSize:24,marginBottom:10}}>Build your own plugins.</h3>
+          <p style={{fontSize:15,lineHeight:1.7,color:'var(--text-mid)'}}>
+            AgentScript has a clean plugin architecture — implement two methods, register your
+            commands, and they instantly work inside every pipeline. Connect any API, database,
+            device, or service. Your plugins compose with all 45+ built-in commands, MCP servers,
+            parallel execution, and AI — out of the box. No framework overhead, no boilerplate.
+          </p>
+        </div>
+        <div style={{display:'flex',gap:16,flexWrap:'wrap',justifyContent:'center',width:'100%'}}>
+          <div style={{flex:'1',minWidth:260,padding:'20px 24px',background:'var(--bg)',border:'1px solid var(--border)',borderRadius:10,textAlign:'left'}}>
+            <div style={{fontFamily:'var(--mono)',fontSize:11,color:'var(--accent)',letterSpacing:1,textTransform:'uppercase',marginBottom:10}}>Your Plugin — 2 Methods</div>
+            <div style={{fontFamily:'var(--mono)',fontSize:12,lineHeight:1.8,color:'var(--text-mid)'}}>
+              <span style={{color:'var(--text-dim)'}}>// That's it. Two methods.</span><br/>
+              <span style={{color:'var(--accent)'}}>Name</span>() → <span style={{color:'var(--accent2)'}}>"my_plugin"</span><br/>
+              <span style={{color:'var(--accent)'}}>Commands</span>() → {"{"}<br/>
+              &nbsp;&nbsp;<span style={{color:'var(--accent2)'}}>"my_cmd"</span>: handler,<br/>
+              {"}"}
+            </div>
+          </div>
+          <div style={{flex:'1',minWidth:260,padding:'20px 24px',background:'var(--bg)',border:'1px solid var(--border)',borderRadius:10,textAlign:'left'}}>
+            <div style={{fontFamily:'var(--mono)',fontSize:11,color:'var(--accent)',letterSpacing:1,textTransform:'uppercase',marginBottom:10}}>Then Use It Everywhere</div>
+            <div style={{fontFamily:'var(--mono)',fontSize:12,lineHeight:1.8,color:'var(--text-mid)'}}>
+              <span style={{color:'var(--accent)'}}>my_cmd</span> <span style={{color:'var(--accent2)'}}>"input"</span><br/>
+              <span style={{color:'var(--accent3)'}}>&gt;=&gt;</span> <span style={{color:'var(--accent)'}}>summarize</span><br/>
+              <span style={{color:'var(--accent3)'}}>&gt;=&gt;</span> <span style={{color:'var(--accent)'}}>notify</span> <span style={{color:'var(--accent2)'}}>"slack"</span><br/>
+              <span style={{color:'var(--text-dim)'}}>// Works with AI, MCP, parallel...</span>
+            </div>
+          </div>
+        </div>
+        <div style={{marginTop:8,padding:'14px 24px',background:'rgba(240,168,66,0.06)',border:'1px solid rgba(240,168,66,0.15)',borderRadius:10,display:'inline-flex',alignItems:'center',gap:10}}>
+          <span style={{fontSize:16}}>🚧</span>
+          <span style={{fontSize:13,color:'var(--accent3)'}}>
+            <strong style={{color:'var(--text)'}}>Plugin Marketplace — Coming Soon.</strong>{' '}
+            We're splitting the plugin ecosystem into its own open repository so anyone can
+            publish, discover, and install community plugins with a single command.
+          </span>
+        </div>
+        <div className="mcp-cta-code" style={{marginTop:4}}>mcp_search "your-tool-here"</div>
+      </div>
+    </div>
+  </section>;
+}
+
+function HowItWorks(){
+  return <section id="how" style={{background:'var(--bg2)'}}>
+    <div className="container">
+      <div className="section-label">How It Works</div>
+      <div className="section-title">Download. Write. Run.</div>
+      <p className="section-sub">No SDKs to learn. No infrastructure to manage. A single binary and your imagination.</p>
+      <div className="steps">
+        <div className="step"><h3>Download the binary</h3><p>One file for your platform. No dependencies, no Docker, no runtime. Drop it in your PATH and you're ready.</p></div>
+        <div className="step"><h3>Write your automation</h3><p>Chain commands into pipelines. Run tasks in parallel. Branch on conditions. Simple one-liners or multi-file production scripts — your call.</p></div>
+        <div className="step"><h3>Run, schedule, or deploy</h3><p>Execute from the terminal, run script files, start an interactive REPL, or deploy to Cloud Run on a cron. Your automation, your infrastructure.</p></div>
+      </div>
+    </div>
+  </section>;
+}
+
+function Integrations(){
+  const items=[
+    {i:'🤖',n:'Gemini AI'},{i:'🧠',n:'Claude AI'},{i:'🔎',n:'Perplexity AI'},{i:'📧',n:'Gmail'},
+    {i:'📅',n:'Google Calendar'},{i:'📁',n:'Google Drive'},{i:'📝',n:'Google Docs'},
+    {i:'📊',n:'Google Sheets'},{i:'📋',n:'Google Forms'},{i:'🎬',n:'YouTube'},
+    {i:'💬',n:'Slack'},{i:'🎮',n:'Discord'},{i:'✈️',n:'Telegram'},{i:'📱',n:'WhatsApp'},
+    {i:'📈',n:'Stock Data'},{i:'💰',n:'Crypto Prices'},{i:'📰',n:'News APIs'},
+    {i:'🌤️',n:'Weather'},{i:'🔗',n:'RSS / Atom'},{i:'👽',n:'Reddit'},
+    {i:'🐙',n:'GitHub (MCP)'},{i:'🏠',n:'Home Assistant'},{i:'📋',n:'PDF Forms'},
+    {i:'🛡️',n:'SSL / TLS'},{i:'🌐',n:'DNS / WHOIS'},{i:'🖼️',n:'Imagen 4'},
+    {i:'🎥',n:'Veo 3.1 Video'},{i:'🗣️',n:'Text-to-Speech'},{i:'☁️',n:'Cloud Run'},
+    {i:'🗄️',n:'SQLite (MCP)'},{i:'🗺️',n:'Google Maps (MCP)'},{i:'🏘️',n:'Airbnb (MCP)'},
+    {i:'🤗',n:'HuggingFace'},
+  ];
+  return <section id="integrations">
+    <div className="container">
+      <div className="section-label">Integrations</div>
+      <div className="section-title">45+ connectors. Zero config.</div>
+      <p className="section-sub">AI models, Google Workspace, social platforms, market data, network tools, smart home, media generation — all built in.</p>
+      <div className="integrations-row">
+        {items.map((x,i)=><div className="int-pill" key={i}><span>{x.i}</span>{x.n}</div>)}
+      </div>
+    </div>
+  </section>;
+}
+
+function Download(){
+  const builds=[
+    {os:'macOS',arch:'Apple Silicon (arm64)',icon:'🍎',file:'agentscript-darwin-arm64',tag:'Recommended'},
+    {os:'macOS',arch:'Intel (amd64)',icon:'🍎',file:'agentscript-darwin-amd64',tag:null},
+    {os:'Linux',arch:'x86_64 (amd64)',icon:'🐧',file:'agentscript-linux-amd64',tag:null},
+    {os:'Linux',arch:'ARM64',icon:'🐧',file:'agentscript-linux-arm64',tag:null},
+    {os:'Windows',arch:'x86_64 (amd64)',icon:'🪟',file:'agentscript-windows-amd64.exe',tag:null},
+  ];
+  return <section id="download" style={{background:'var(--bg2)'}}>
+    <div className="container">
+      <div className="section-label">Download</div>
+      <div className="section-title">Get AgentScript.</div>
+      <p className="section-sub">Single binary, zero dependencies. Download, add your API key, and start automating in under a minute.</p>
+      <div className="downloads-grid">
+        {builds.map((b,i)=><a className="dl-card" key={i} href={`/releases/latest/${b.file}`} download>
+          <div className="dl-icon">{b.icon}</div>
+          <div className="dl-info"><h4>{b.os}</h4><p>{b.arch}</p></div>
+          {b.tag&&<span className="dl-tag">{b.tag}</span>}
+        </a>)}
+      </div>
+      <div className="dl-note">
+        <strong>License:</strong> AgentScript is proprietary software. Each download includes a 14-day free trial. A license key is required for continued use — see <a href="#pricing" style={{color:'var(--accent)',textDecoration:'none'}}>Pricing</a>.
+      </div>
+    </div>
+  </section>;
+}
+
+function Pricing(){
+  const tiers=[
+    {tier:'Starter',price:'$29',period:'/mo',featured:false,
+     desc:'For individuals automating personal and freelance workflows.',
+     features:['All 45+ commands & integrations','Unlimited local pipelines','PDF form filling','Email, Slack, Discord notifications','Community support'],
+     btn:'Start Free Trial',cls:'price-btn price-btn-s'},
+    {tier:'Professional',price:'$99',period:'/mo',featured:true,
+     desc:'For teams shipping production automations and scheduled jobs.',
+     features:['Everything in Starter','Cloud Run deploy & cron scheduling','MCP server connections (unlimited)','Smart Home / IoT integrations','Priority email support','Up to 10 seats'],
+     btn:'Start Free Trial',cls:'price-btn price-btn-p'},
+    {tier:'Enterprise',price:'Custom',period:'',featured:false,
+     desc:'For organizations needing custom plugins, SLAs, and on-prem.',
+     features:['Everything in Professional','Custom plugin development','Dedicated support engineer','SSO & audit logging','On-prem deployment option','Unlimited seats'],
+     btn:'Contact Sales',cls:'price-btn price-btn-s'},
+  ];
+  return <section id="pricing">
+    <div className="container">
+      <div className="section-label">Pricing</div>
+      <div className="section-title">Simple, transparent pricing.</div>
+      <p className="section-sub">Start with a 14-day free trial. No credit card required.</p>
+      <div className="pricing-grid">
+        {tiers.map((t,i)=><div className={`price-card ${t.featured?'featured':''}`} key={i}>
+          <div className="price-tier">{t.tier}</div>
+          <div className="price-amt">{t.price}<span>{t.period}</span></div>
+          <p className="price-desc">{t.desc}</p>
+          <ul className="price-features">{t.features.map((f,j)=><li key={j}>{f}</li>)}</ul>
+          <a href="#contact" className={t.cls}>{t.btn}</a>
+        </div>)}
+      </div>
+    </div>
+  </section>;
+}
+
+function Contact(){
+  const[sent,setSent]=useState(false);
+  return <section id="contact" style={{background:'var(--bg2)'}}>
+    <div className="container">
+      <div className="section-label">Get in Touch</div>
+      <div className="section-title">Let's talk.</div>
+      <div className="contact-grid">
+        <div className="contact-info">
+          <h3>Ready to automate?</h3>
+          <p>Whether you need a demo, want to discuss custom integrations, or are evaluating AgentScript for your team — we'd love to hear from you.</p>
+          <div className="contact-detail"><div className="contact-detail-icon">📧</div><a href="mailto:hello@agentscript.dev">hello@agentscript.dev</a></div>
+          <div className="contact-detail"><div className="contact-detail-icon">💬</div><a href="https://twitter.com/agentscript">@agentscript</a></div>
+          <div className="contact-detail"><div className="contact-detail-icon">📍</div><span style={{color:'var(--text-mid)'}}>San Francisco, CA</span></div>
+        </div>
+        <div>
+          {sent?<div style={{padding:'48px',textAlign:'center',background:'var(--bg)',border:'1px solid var(--border)',borderRadius:'14px'}}>
+            <div style={{fontSize:48,marginBottom:16}}>✓</div>
+            <h3 style={{marginBottom:8}}>Message sent!</h3>
+            <p style={{color:'var(--text-dim)',fontSize:14}}>We'll get back to you within 24 hours.</p>
+          </div>:
+          <form className="contact-form" onSubmit={e=>{e.preventDefault();setSent(true)}}>
+            <div className="form-row">
+              <div className="form-group"><label>Name</label><input type="text" placeholder="Jane Smith" required/></div>
+              <div className="form-group"><label>Email</label><input type="email" placeholder="jane@company.com" required/></div>
+            </div>
+            <div className="form-group"><label>Interest</label>
+              <select defaultValue=""><option value="" disabled>Select one...</option>
+                <option>Free trial / Demo</option><option>Professional license</option>
+                <option>Enterprise / Custom</option><option>Partnership</option><option>Other</option>
+              </select>
+            </div>
+            <div className="form-group"><label>Message</label><textarea placeholder="Tell us about your use case..." required/></div>
+            <button type="submit" className="btn-primary" style={{alignSelf:'flex-start'}}>Send Message →</button>
+          </form>}
+        </div>
+      </div>
+    </div>
+  </section>;
+}
+
+function Footer(){
+  return <footer><div className="container"><div className="footer-inner">
+    <div className="footer-copy">© {new Date().getFullYear()} AgentScript Labs LLC. All rights reserved.</div>
+    <div className="footer-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">License</a></div>
+  </div></div></footer>;
+}
+
+function App(){
+  return <>
+    <Nav/>
+    <Hero/>
+    <div className="divider"/>
+    <Showcases/>
+    <MCPEcosystem/>
+    <HowItWorks/>
+    <div className="divider"/>
+    <Integrations/>
+    <Download/>
+    <div className="divider"/>
+    <Pricing/>
+    <Contact/>
+    <Footer/>
+  </>;
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>
