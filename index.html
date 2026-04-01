@@ -72,7 +72,7 @@
   "logo": "https://agentscript.dev/logo.png",
   "contactPoint": {
     "@type": "ContactPoint",
-    "email": "enterprise@agentscript.dev",
+    "email": "vinod.halaharvi@gmail.com",
     "contactType": "sales"
   },
   "address": {
@@ -311,10 +311,10 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 <h2>Integrations</h2>
 <p>45+ built-in connectors: Gemini AI, Claude AI, Perplexity AI, Gmail, Google Calendar, Google Drive, Google Docs, Google Sheets, YouTube, Slack, Discord, Telegram, WhatsApp, Stock Data, Crypto Prices, News APIs, Weather, RSS, Reddit, GitHub, Home Assistant, PDF Forms, SSL/TLS, DNS/WHOIS, Imagen 4, Veo 3.1 Video, Text-to-Speech, Cloud Run, SQLite, Google Maps, HuggingFace.</p>
 <h2>Enterprise</h2>
-<p>On-premise or private cloud deployment. Custom plugin development. Dedicated support. SOC 2 ready. SSO and audit logging. Contact enterprise@agentscript.dev to book a demo.</p>
+<p>On-premise or private cloud deployment. Custom plugin development. Dedicated support. SOC 2 ready. SSO and audit logging. Contact vinod.halaharvi@gmail.com to book a demo.</p>
 <h2>Why AgentScript</h2>
 <p>Their UI is the product. Our DSL is the product. Version control, composability, no vendor lock-in, AI-native, 10,000+ MCP servers, extensible plugin architecture.</p>
-<p>Contact: <a href="mailto:enterprise@agentscript.dev">enterprise@agentscript.dev</a> | San Francisco, CA | © 2026 AgentScript Labs LLC</p>
+<p>Contact: <a href="mailto:vinod.halaharvi@gmail.com">vinod.halaharvi@gmail.com</a> | San Francisco, CA | © 2026 AgentScript Labs LLC</p>
 </noscript>
 <script type="text/babel">
 const{useState,useEffect}=React;
@@ -692,10 +692,17 @@ function Integrations(){
   return <section id="integrations">
     <div className="container">
       <div className="section-label">Integrations</div>
-      <div className="section-title">45+ connectors. Zero config.</div>
-      <p className="section-sub">AI models, Google Workspace, social platforms, market data, network tools, smart home, media generation — all built in.</p>
+      <div className="section-title">45+ built-in connectors. And growing.</div>
+      <p className="section-sub">These ship out of the box — AI models, Google Workspace, social platforms, market data, network tools, smart home, media generation. Need something custom? AgentScript is plugin-driven — write any connector in Go in minutes with our two-method plugin interface.</p>
       <div className="integrations-row">
         {items.map((x,i)=><div className="int-pill" key={i}><span>{x.i}</span>{x.n}</div>)}
+      </div>
+      <div style={{marginTop:20,padding:'14px 20px',background:'var(--accent-dim)',border:'1px solid rgba(196,240,66,.12)',borderRadius:10,display:'inline-flex',alignItems:'center',gap:10}}>
+        <span style={{fontSize:14}}>🔌</span>
+        <span style={{fontSize:13,color:'var(--text-mid)'}}>
+          <strong style={{color:'var(--accent)'}}>Plugin-driven architecture.</strong>{' '}
+          Implement two methods in Go, register your commands, and they work inside every pipeline — with AI, MCP, parallel execution, and all 45+ connectors.
+        </span>
       </div>
     </div>
   </section>;
@@ -807,8 +814,8 @@ function Contact(){
           <p>Tell us about your automation challenges. We'll show you how AgentScript
             solves them — with a live demo using your real use cases.
             No slides, no fluff. Just working pipelines.</p>
-          <div className="contact-detail"><div className="contact-detail-icon">📧</div><a href="mailto:enterprise@agentscript.dev">enterprise@agentscript.dev</a></div>
-          <div className="contact-detail"><div className="contact-detail-icon">💬</div><a href="https://twitter.com/agentscript">@agentscript</a></div>
+          <div className="contact-detail"><div className="contact-detail-icon">📧</div><a href="mailto:vinod.halaharvi@gmail.com">vinod.halaharvi@gmail.com</a></div>
+          <div className="contact-detail"><div className="contact-detail-icon">🐙</div><a href="https://github.com/vinodhalaharvi">github.com/vinodhalaharvi</a></div>
           <div className="contact-detail"><div className="contact-detail-icon">📍</div><span style={{color:'var(--text-mid)'}}>San Francisco, CA</span></div>
         </div>
         <div>
@@ -817,11 +824,11 @@ function Contact(){
             <h3 style={{marginBottom:8}}>We'll be in touch.</h3>
             <p style={{color:'var(--text-dim)',fontSize:14}}>Expect to hear from us within one business day.</p>
           </div>:
-          <form className="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onSubmit={e=>{
+          <form className="contact-form" action="https://formspree.io/f/meepzzbd" method="POST" onSubmit={e=>{
             e.preventDefault();
             fetch(e.target.action,{method:'POST',body:new FormData(e.target),headers:{'Accept':'application/json'}})
-              .then(r=>{if(r.ok)setSent(true);else alert('Something went wrong. Please email enterprise@agentscript.dev directly.')})
-              .catch(()=>alert('Network error. Please email enterprise@agentscript.dev directly.'));
+              .then(r=>{if(r.ok)setSent(true);else alert('Something went wrong. Please email vinod.halaharvi@gmail.com directly.')})
+              .catch(()=>alert('Network error. Please email vinod.halaharvi@gmail.com directly.'));
           }}>
             <div className="form-row">
               <div className="form-group"><label>Name</label><input type="text" name="name" placeholder="Jane Smith" required/></div>
