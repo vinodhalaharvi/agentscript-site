@@ -3,8 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentScript — Scripting in the Agentic Era</title>
-<meta name="description" content="AgentScript connects AI, APIs, and your tools into powerful automation pipelines. Research, generate media, fill forms, monitor infrastructure, and deploy — all from readable scripts.">
+<title>AgentScript — Enterprise AI Automation Platform | Scripting in the Agentic Era</title>
+<meta name="description" content="AgentScript is an enterprise automation platform that connects AI (Claude, Gemini, GPT-4), 10,000+ MCP servers, and 45+ integrations into powerful scripting pipelines. Compliance auditing, invoice processing, infrastructure monitoring, and more — from readable scripts.">
+<meta name="keywords" content="enterprise automation, AI automation platform, MCP orchestration, compliance automation, invoice processing, infrastructure monitoring, agentic AI, scripting language, pipeline automation, Claude AI, Gemini AI, energy automation, DevOps automation, PDF form filling">
+<meta name="author" content="AgentScript Labs LLC">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://agentscript.dev/">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://agentscript.dev/">
+<meta property="og:title" content="AgentScript — Scripting in the Agentic Era">
+<meta property="og:description" content="Enterprise AI automation platform. Connect Claude, Gemini, GPT-4, 10,000+ MCP servers, and 45+ integrations into powerful scripting pipelines. Compliance, invoice processing, infrastructure monitoring — from readable scripts.">
+<meta property="og:site_name" content="AgentScript">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@agentscript">
+<meta name="twitter:title" content="AgentScript — Scripting in the Agentic Era">
+<meta name="twitter:description" content="Enterprise AI automation platform. Connect AI, MCP servers, and 45+ integrations into powerful scripting pipelines.">
+
+<!-- Structured Data / JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "AgentScript",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "macOS, Linux, Windows",
+  "description": "Enterprise AI automation platform that connects Claude, Gemini, GPT-4, 10,000+ MCP servers, and 45+ integrations into powerful scripting pipelines.",
+  "url": "https://agentscript.dev",
+  "author": {
+    "@type": "Organization",
+    "name": "AgentScript Labs LLC",
+    "url": "https://agentscript.dev"
+  },
+  "offers": {
+    "@type": "Offer",
+    "category": "Enterprise Software",
+    "availability": "https://schema.org/InStoreOnly",
+    "description": "Enterprise licensing with custom integrations and dedicated support"
+  },
+  "featureList": [
+    "AI Automation (Claude, Gemini, GPT-4, Perplexity, HuggingFace)",
+    "10,000+ MCP Server Integrations",
+    "PDF Form Filling with AI",
+    "Infrastructure Monitoring (SSL, DNS, Ping, HTTP)",
+    "Live Interactive Dashboards",
+    "Google Workspace Integration",
+    "Multi-channel Notifications (Slack, Email, Discord, Telegram)",
+    "Parallel Execution Engine",
+    "Multi-AI Code Review (Quorum)",
+    "Cloud Run Deployment & Scheduling",
+    "Custom Plugin Architecture",
+    "On-premise Deployment"
+  ]
+}
+</script>
+
+<!-- Organization Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "AgentScript Labs LLC",
+  "url": "https://agentscript.dev",
+  "logo": "https://agentscript.dev/logo.png",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "enterprise@agentscript.dev",
+    "contactType": "sales"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "San Francisco",
+    "addressRegion": "CA",
+    "addressCountry": "US"
+  },
+  "sameAs": [
+    "https://twitter.com/agentscript"
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=JetBrains+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
@@ -83,8 +164,22 @@ section{padding:120px 0;position:relative}
 .showcase-text h3{font-size:24px;font-weight:700;margin-bottom:12px;letter-spacing:-.5px}
 .showcase-text p{font-size:15px;color:var(--text-dim);line-height:1.7;margin-bottom:16px}
 .showcase-tag{display:inline-block;padding:4px 10px;background:var(--accent-dim);border:1px solid rgba(196,240,66,.12);border-radius:100px;font-family:var(--mono);font-size:10px;color:var(--accent);font-weight:500;margin-right:6px;margin-bottom:6px}
-.showcase-code{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:20px;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--text-mid);overflow-x:auto;white-space:pre}
+.showcase-code{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:20px;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--text-mid);overflow-x:auto;white-space:pre;position:relative}
 .showcase-code .k{color:var(--accent)}.showcase-code .s{color:var(--accent2)}.showcase-code .o{color:var(--accent3)}.showcase-code .c{color:var(--text-dim)}
+
+/* Run Pills */
+.run-pills{display:flex;gap:6px;margin-bottom:8px}
+.run-pill{padding:5px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:100px;font-family:var(--mono);font-size:10px;font-weight:500;color:var(--text-dim);cursor:pointer;transition:all .2s;user-select:none}
+.run-pill:hover{border-color:rgba(196,240,66,.2);color:var(--accent)}
+.run-pill.active{border-color:rgba(196,240,66,.3);color:var(--accent);background:var(--accent-dim)}
+.run-copy-btn{position:absolute;top:10px;right:10px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:3px 10px;font-family:var(--mono);font-size:10px;color:var(--text-dim);cursor:pointer;transition:all .2s;z-index:1}
+.run-copy-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* DEMO VIDEO */
+.demo-video{margin-top:64px;opacity:0;animation:fadeUp .9s .85s ease-out forwards}
+.demo-video-label{text-align:center;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
+.demo-video-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--bg2)}
+.demo-video-wrap video{width:100%;display:block}
 
 /* HOW IT WORKS */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px;counter-reset:step}
@@ -197,6 +292,30 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 </head>
 <body>
 <div id="root"></div>
+<noscript>
+<h1>AgentScript — Scripting in the Agentic Era</h1>
+<p>AgentScript is an enterprise AI automation platform that connects Claude, Gemini, GPT-4, 10,000+ MCP servers, and 45+ integrations into powerful scripting pipelines.</p>
+<h2>Use Cases</h2>
+<ul>
+<li><strong>Compliance & Security Auditing</strong> — Scan SSL certificates, ports, DNS across hundreds of domains in parallel. AI generates formal compliance reports.</li>
+<li><strong>Invoice & Document Processing</strong> — OCR invoices, match against purchase orders in your database, flag discrepancies, generate audit reports.</li>
+<li><strong>Infrastructure Monitoring</strong> — Real-time dashboards from network telemetry. SSL, ping, HTTP, DNS — with conditional Slack alerts.</li>
+<li><strong>AI-Powered PDF Form Filling</strong> — Feed any data to any PDF form. AI reads fields, maps your data, fills every field automatically.</li>
+<li><strong>Multi-AI Code Review</strong> — Claude, Gemini, and GPT-4 review code simultaneously, debate across rounds, and produce a synthesized verdict.</li>
+<li><strong>Research & Intelligence</strong> — Pull from web search, RSS, Reddit, news APIs, Perplexity AI in parallel. Merge and deliver via email, Slack, Google Docs.</li>
+<li><strong>Smart Home & IoT</strong> — Control Home Assistant devices, Ring doorbells, security systems via MCP.</li>
+<li><strong>Video Production</strong> — AI-generated narration, images, video stitching, and YouTube upload in one pipeline.</li>
+</ul>
+<h2>MCP Ecosystem</h2>
+<p>The Model Context Protocol has 10,000+ community-built servers. AgentScript is the composition layer — connect any database, API, smart home device, or cloud service with a single line.</p>
+<h2>Integrations</h2>
+<p>45+ built-in connectors: Gemini AI, Claude AI, Perplexity AI, Gmail, Google Calendar, Google Drive, Google Docs, Google Sheets, YouTube, Slack, Discord, Telegram, WhatsApp, Stock Data, Crypto Prices, News APIs, Weather, RSS, Reddit, GitHub, Home Assistant, PDF Forms, SSL/TLS, DNS/WHOIS, Imagen 4, Veo 3.1 Video, Text-to-Speech, Cloud Run, SQLite, Google Maps, HuggingFace.</p>
+<h2>Enterprise</h2>
+<p>On-premise or private cloud deployment. Custom plugin development. Dedicated support. SOC 2 ready. SSO and audit logging. Contact enterprise@agentscript.dev to book a demo.</p>
+<h2>Why AgentScript</h2>
+<p>Their UI is the product. Our DSL is the product. Version control, composability, no vendor lock-in, AI-native, 10,000+ MCP servers, extensible plugin architecture.</p>
+<p>Contact: <a href="mailto:enterprise@agentscript.dev">enterprise@agentscript.dev</a> | San Francisco, CA | © 2026 AgentScript Labs LLC</p>
+</noscript>
 <script type="text/babel">
 const{useState,useEffect}=React;
 
@@ -210,9 +329,8 @@ function Nav(){
       <a href="#mcp">MCP Agents</a>
       <a href="#how">How It Works</a>
       <a href="#integrations">Integrations</a>
-      <a href="#download">Download</a>
-      <a href="#pricing">Pricing</a>
-      <a href="#contact" className="nav-cta">Get in Touch</a>
+      <a href="#enterprise">Enterprise</a>
+      <a href="#contact" className="nav-cta">Book a Demo</a>
     </div>
   </div></nav>;
 }
@@ -221,7 +339,7 @@ function Hero(){
   return <section className="hero">
     <div className="hero-glow hero-glow-1"/><div className="hero-glow hero-glow-2"/>
     <div className="container"><div className="hero-content">
-      <div className="hero-badge"><span className="hero-badge-dot"/>Available for macOS, Linux &amp; Windows</div>
+      <div className="hero-badge"><span className="hero-badge-dot"/>Now available for enterprise teams</div>
       <h1>Scripting in the<br/><em>agentic era.</em></h1>
       <p className="hero-sub">
         AgentScript is a powerful scripting language that connects AI, APIs, and your entire
@@ -229,7 +347,7 @@ function Hero(){
         to infrastructure monitoring — write scripts that do what used to take entire teams.
       </p>
       <div className="hero-actions">
-        <a href="#download" className="btn-primary">↓ Download Free Trial</a>
+        <a href="#contact" className="btn-primary">Book a Demo</a>
         <a href="#showcases" className="btn-secondary">See Real Examples →</a>
       </div>
     </div>
@@ -252,8 +370,69 @@ function Hero(){
         {t:'<span class="t-op">&gt;=&gt;</span> <span class="t-kw">notify</span> <span class="t-str">"slack"</span>'},
       ].map((l,i)=><div key={i} style={{opacity:0,animation:`fadeUp .4s ${.9+i*.08}s ease-out forwards`}} dangerouslySetInnerHTML={{__html:l.t}}/>)}
     </div></div>
+    <div className="demo-video">
+      <div className="demo-video-label">Watch the Demo</div>
+      <div className="demo-video-wrap">
+        <video controls preload="metadata" poster="">
+          <source src="/demo.mp4" type="video/mp4"/>
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
     </div>
   </section>;
+}
+
+// Shared highlight + CodeBlock — used by Showcases and MCP sections
+const KW=/\b(search|summarize|ask|analyze|save|read|merge|email|notify|pdf_fields|pdf_fill|weather|crypto|stock|news_headlines|rss|reddit|job_search|image_generate|text_to_speech|images_to_video|audio_video_merge|youtube_shorts|youtube_upload|mcp_connect|mcp_agent|mcp_search_install|mcp_search|mcp|pfmap|claude|match|contains|doc_create|calendar|maps_trip|places_search|translate|perplexity_recent|form_create|sheet_create|task|contact_find|drive_save|video_generate|video_script|codereview|codereview_focus|table_render|hf_classify|hf_generate|hf_summarize|hf_ner|hf_translate|hf_qa|hf_zero_shot)\b/g;
+function hl(code){
+  return code
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/(\/\/[^\n]*)/g,'\x01$1\x02')
+    .replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g,'\x03$1\x04')
+    .replace(/(&gt;=&gt;|&lt;\*&gt;)/g,'\x05$1\x06')
+    .replace(KW,'<span class="k">$1</span>')
+    .replace(/\x01([\s\S]*?)\x02/g,'<span class="c">$1</span>')
+    .replace(/\x03([\s\S]*?)\x04/g,'<span class="s">$1</span>')
+    .replace(/\x05([\s\S]*?)\x06/g,'<span class="o">$1</span>');
+}
+function CodeBlock({item}){
+  const[mode,setMode]=useState('dsl');
+  const[copied,setCopied]=useState(false);
+  const copy=(text)=>{navigator.clipboard.writeText(text);setCopied(true);setTimeout(()=>setCopied(false),2000)};
+  const shellEsc=(s)=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const setupBlock=item.setup||'';
+  const setupDisplay=setupBlock?`<span class="c">${shellEsc(setupBlock)}</span>\n\n`:'';
+  let display, copyText;
+  if(mode==='dsl'){
+    display=hl(item.code);
+    copyText=item.code;
+  } else if(mode==='file'){
+    copyText=(setupBlock?setupBlock+'\n\n':'')+`cat > ${item.file} << 'EOF'\n${item.code}\nEOF\n\n./agentscript -f ${item.file}`;
+    display=setupDisplay
+      + `<span class="c">${shellEsc(`cat > ${item.file} << 'EOF'`)}</span>\n`
+      + hl(item.code) + '\n'
+      + `<span class="c">EOF</span>\n\n`
+      + `<span class="o">${shellEsc(`./agentscript -f ${item.file}`)}</span>`;
+  } else {
+    copyText=(setupBlock?setupBlock+'\n\n':'')+`./agentscript -e '\n${item.code}\n'`;
+    display=setupDisplay
+      + `<span class="o">${shellEsc("./agentscript -e '")}</span>\n`
+      + hl(item.code) + '\n'
+      + `<span class="o">'</span>`;
+  }
+  return <div style={{position:'relative'}}>
+    <div className="run-pills">
+      <div className={`run-pill ${mode==='dsl'?'active':''}`} onClick={()=>setMode('dsl')}>DSL</div>
+      <div className={`run-pill ${mode==='file'?'active':''}`} onClick={()=>setMode('file')}>cat &gt; file</div>
+      <div className={`run-pill ${mode==='expr'?'active':''}`} onClick={()=>setMode('expr')}>-e</div>
+    </div>
+    <button className="run-copy-btn" onClick={()=>copy(copyText)}>{copied?'✓ Copied':'Copy'}</button>
+    <div className="showcase-code" dangerouslySetInnerHTML={{__html:display}}/>
+    {mode!=='dsl' && <div style={{marginTop:6,fontSize:11,color:'var(--text-dim)',fontFamily:'var(--mono)'}}>
+      💡 Windows users: use Git Bash, WSL, or PowerShell with bash.
+    </div>}
+  </div>;
 }
 
 function Showcases(){
@@ -262,43 +441,51 @@ function Showcases(){
       title:'YouTube Shorts Factory',
       desc:'Generate narration with AI text-to-speech, create images with Imagen, stitch them into video, merge audio, and upload to YouTube Shorts — all in one script. Full video production pipeline, zero manual editing.',
       tags:['AI Video','Text-to-Speech','Imagen','YouTube Upload'],
-      code:`( ( ask "write a 30 second narration about\n    why butterflies are amazing"\n    >=> text_to_speech "Kore"\n    >=> save "narration.wav"\n  )\n  <*> ( ( image_generate "monarch butterfly close up"\n          <*> image_generate "butterflies in sunlit garden"\n        )\n        >=> merge\n        >=> images_to_video "butterfly1.png butterfly2.png"\n      )\n)\n>=> merge\n>=> audio_video_merge "butterfly_shorts.mp4"\n>=> youtube_shorts "Amazing Butterflies"`
+      file:'youtube-shorts.as',
+      code:`( ( ask "write a 30 second narration about\n    why butterflies are amazing"\n    >=> text_to_speech "Kore"\n    >=> save "narration.wav"\n  )\n  <*> ( ( image_generate "monarch butterfly close up"\n          >=> save "butterfly1.png"\n          <*> image_generate "butterflies in sunlit garden"\n          >=> save "butterfly2.png"\n        )\n        >=> merge\n        >=> images_to_video "butterfly1.png butterfly2.png"\n        >=> save "butterfly_video.mp4"\n      )\n)\n>=> merge\n>=> audio_video_merge "butterfly_shorts.mp4"`,
     },
     {
       title:'AI-Powered PDF Form Filling',
-      desc:'Point AgentScript at any PDF form and a text file with your data. AI reads every field, intelligently maps your data, and fills the entire form automatically. Tax forms, applications, onboarding packets — done in seconds.',
-      tags:['PDF Forms','AI Mapping','Gemini','Automation'],
-      code:`// Inspect what a form needs\npdf_fields "tax-form.pdf"\n>=> ask "what data does this form require?"\n\n// Fill it from any data source\nread "client-data.txt"\n>=> pdf_fill "tax-form.pdf"\n\n// Or gather data and fill in parallel\n( read "client-info.txt"\n  <*> pdf_fields "application.pdf"\n)\n>=> merge\n>=> pdf_fill "application.pdf"`
+      desc:'Download any PDF form (like a W-9 from irs.gov/pub/irs-pdf/fw9.pdf), create a text file with client data (name, address, SSN, etc.), then let AgentScript AI read every field, map your data, and fill the entire form automatically.',
+      tags:['PDF Forms','AI Mapping','Claude','Automation'],
+      file:'pdf-fill.as',
+      setup:`curl -sL "https://www.irs.gov/pub/irs-pdf/fw9.pdf" -o w9-form.pdf\n\ncat > client-data.txt << 'EOF'\nName: Sarah Mitchell\nBusiness name: Mitchell Digital Consulting LLC\nFederal tax classification: Limited liability company\nLLC classification: S corporation\nExempt payee code: 5\nAddress: 4200 Wilshire Boulevard, Suite 310\nCity: Los Angeles\nState: CA\nZIP code: 90010\nAccount numbers: 7741928\nRequester: Acme Ventures Inc, 500 Market St, SF CA 94105\nSocial Security Number: 456-78-9012\nSignature date: 03/27/2026\nEOF`,
+      code:`// Inspect form fields\npdf_fields "w9-form.pdf"\n>=> ask "what data does this form require?"\n\n// Fill it with client data\nread "client-data.txt"\n>=> pdf_fill "w9-form.pdf"`,
     },
     {
       title:'Full-Stack App Scaffolding via GitHub',
       desc:'Connect to GitHub via MCP, create a repository, and push an entire Vite + React project — package.json, components, config — all files created in parallel. Ship a working app without touching a browser.',
       tags:['GitHub MCP','React','Vite','Parallel Deploy'],
-      code:`mcp_connect "github" "npx -y @mcp/server-github"\n>=> mcp "github:create_repository"\n    '{"name": "hello-vite"}'\n>=> ( mcp "github:create_or_update_file"\n       '{"path": "package.json", ...}'\n     <*> mcp "github:create_or_update_file"\n          '{"path": "src/App.jsx", ...}'\n     <*> mcp "github:create_or_update_file"\n          '{"path": "index.html", ...}'\n   )\n>=> merge\n>=> email "team@company.com"`
+      file:'mcp-vite-project.as',
+      code:`mcp_connect "github"\n    "npx -y @modelcontextprotocol/server-github"\n\n>=> mcp_agent "github" "create a new repo\n    called hello-vite-$RANDOM with a README"\n\n>=> ( mcp_agent "github" "create index.html\n       in the new repo with a basic HTML page"\n     <*> mcp_agent "github" "create src/App.jsx\n          in the new repo with a React component\n          that says Hello from AgentScript"\n   )\n>=> merge\n>=> notify "slack"`,
     },
     {
       title:'Network Health Dashboard',
       desc:'Scan a dozen sites in parallel — SSL certificates, ping latency, HTTP status, DNS records — merge the telemetry, have AI parse it into structured JSON, render an interactive HTML dashboard, and alert Slack if anything is degraded.',
       tags:['SSL','Ping','DNS','Dashboard','Slack Alerts'],
-      code:`(\n  pfmap "ssl_check"  "github.com,google.com,stripe.com"\n  <*> pfmap "ping"   "github.com,google.com,stripe.com"\n  <*> pfmap "http_check"\n      "https://github.com,https://google.com"\n)\n>=> merge\n>=> claude "Parse into JSON with health status"\n>=> save "network-data.json"\n\nread "network-data.json"\n>=> match\n  | contains "DOWN"     >=> notify "slack"\n  | contains "DEGRADED" >=> notify "slack"\n  | _                   >=> ask "All systems healthy"`
+      file:'network-dashboard-full.as',
+      code:`(\n  pfmap "ssl_check"  "github.com,google.com,stripe.com"\n  <*> pfmap "ping"   "github.com,google.com,stripe.com"\n  <*> pfmap "http_check"\n      "https://github.com,https://google.com"\n)\n>=> merge\n>=> claude "Parse into JSON with health status"\n>=> save "network-data.json"\n\nread "network-data.json"\n>=> match\n  | contains "DOWN"     >=> notify "slack"\n  | contains "DEGRADED" >=> notify "slack"\n  | _                   >=> ask "All systems healthy"`,
     },
     {
       title:'Smart Home + Security',
       desc:'Connect to Home Assistant via MCP and control every device in your house — lights, alarms, sensors. Get Ring doorbell alerts, arm your security system, check battery levels, and trigger automations from simple scripts.',
       tags:['Home Assistant','Ring','MCP','IoT'],
-      code:`// Turn on lights with color\nmcp_connect "ha" "npx -y @ha/mcp@latest"\n>=> mcp_agent "ha" "lights_control turn_on\n    light.living_room brightness 255\n    rgb_color 255 0 0"\n\n// Check Ring doorbell status\nmcp_agent "ha" "get state of\n    event.front_door_motion,\n    sensor.front_door_battery"\n>=> ask "Summarize Ring status"\n>=> save "ring-status.md"\n\n// Arm security\nmcp_agent "ha" "arm alarm_control_panel\n    in home mode with code 7111"`
+      file:'ha-lights-on.as',
+      code:`// Turn on lights with color\nmcp_connect "ha" "npx -y @ha/mcp@latest"\n>=> mcp_agent "ha" "lights_control turn_on\n    light.living_room brightness 255\n    rgb_color 255 0 0"\n\n// Check Ring doorbell status\nmcp_agent "ha" "get state of\n    event.front_door_motion,\n    sensor.front_door_battery"\n>=> ask "Summarize Ring status"\n>=> save "ring-status.md"\n\n// Arm security\nmcp_agent "ha" "arm alarm_control_panel\n    in home mode with code 7111"`,
     },
     {
       title:'Multi-Source Research & Reports',
       desc:'Pull from web search, RSS feeds, Reddit, Hacker News, news APIs, and Perplexity AI — all in parallel. Merge, analyze, and push the output to Google Docs, Sheets, email, and Slack simultaneously.',
       tags:['Research','Perplexity','Google Docs','Multi-Channel'],
-      code:`(\n  perplexity_recent "Go language news" "week"\n  <*> perplexity_recent "AI agents" "week"\n  <*> stock "NVDA,MSFT,GOOG"\n  <*> rss "hn"\n  <*> reddit "r/golang"\n)\n>=> merge\n>=> ask "CTO morning briefing: key\n    developments, what matters, what to watch"\n>=> (\n  doc_create "Weekly Tech Brief"\n  <*> email "team@company.com"\n  <*> notify "slack"\n)`
+      file:'tech-pulse.as',
+      code:`(\n  perplexity_recent "Go language news" "week"\n  <*> perplexity_recent "AI agents" "week"\n  <*> stock "NVDA,MSFT,GOOG"\n  <*> rss "hn"\n  <*> reddit "r/golang"\n)\n>=> merge\n>=> ask "CTO morning briefing: key\n    developments, what matters, what to watch"\n>=> (\n  doc_create "Weekly Tech Brief"\n  <*> email "team@company.com"\n  <*> notify "slack"\n)`,
     },
     {
       title:'Quorum Code Review — 3 AIs Debate Your Code',
       desc:'Feed source code to Claude, Gemini, and GPT-4 simultaneously. They review it independently, then debate each other across multiple rounds. A moderator synthesizes a final verdict. Like having three senior engineers review every PR.',
       tags:['Claude','Gemini','GPT-4','Multi-Round Debate','Code Quality'],
-      code:`// Three AI models review your code\nread "pkg/agent/agent.go"\n>=> codereview "3"\n\n// Focused review on a specific concern\nread "main.go"\n>=> codereview_focus "error handling" "2"\n\n// Review + auto-create GitHub issue\nmcp_connect "github" "npx -y @mcp/server-github"\n>=> read "pkg/agent/agent.go"\n>=> codereview_focus "security" "3"\n>=> mcp_agent "github" "create an issue in\n    my-org/my-repo with the findings"`
+      file:'review-to-issue.as',
+      code:`// Three AI models review your code\nread "pkg/agent/agent.go"\n>=> codereview "3"\n\n// Focused review on a specific concern\nread "main.go"\n>=> codereview_focus "error handling" "2"\n\n// Review + auto-create GitHub issue\nmcp_connect "github" "npx -y @modelcontextprotocol/server-github"\n>=> read "pkg/agent/agent.go"\n>=> codereview_focus "security" "3"\n>=> mcp_agent "github" "create an issue in\n    my-org/my-repo with the findings"`,
     },
   ];
   return <section id="showcases">
@@ -313,17 +500,7 @@ function Showcases(){
             <p>{item.desc}</p>
             <div>{item.tags.map((t,j)=><span className="showcase-tag" key={j}>{t}</span>)}</div>
           </div>
-          <div className="showcase-code" dangerouslySetInnerHTML={{__html:
-            item.code
-              .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-              .replace(/(\/\/[^\n]*)/g,'\x01$1\x02')
-              .replace(/("(?:[^"\\]|\\.)*")/g,'\x03$1\x04')
-              .replace(/(&gt;=&gt;|&lt;\*&gt;)/g,'\x05$1\x06')
-              .replace(/\b(search|summarize|ask|analyze|save|read|merge|email|notify|pdf_fields|pdf_fill|weather|crypto|stock|news_headlines|rss|reddit|job_search|image_generate|text_to_speech|images_to_video|audio_video_merge|youtube_shorts|youtube_upload|mcp_connect|mcp_agent|mcp|pfmap|claude|match|contains|doc_create|calendar|maps_trip|places_search|translate|perplexity_recent|form_create|sheet_create|task|contact_find|drive_save|video_generate|video_script|codereview|codereview_focus)\b/g,'<span class="k">$1</span>')
-              .replace(/\x01([\s\S]*?)\x02/g,'<span class="c">$1</span>')
-              .replace(/\x03([\s\S]*?)\x04/g,'<span class="s">$1</span>')
-              .replace(/\x05([\s\S]*?)\x06/g,'<span class="o">$1</span>')
-          }}/>
+          <CodeBlock item={item}/>
         </div>)}
       </div>
     </div>
@@ -333,57 +510,54 @@ function Showcases(){
 function MCPEcosystem(){
   const examples=[
     {
-      icon:'🏘️',title:'Airbnb + Google Maps',
-      desc:'Search Airbnb listings, filter by price, and plot every option on a Google Maps trip — two MCP servers working together.',
-      code:`mcp_connect "airbnb" "npx -y @openbnb/mcp-server-airbnb"\nmcp_connect "maps" "npx -y @mcp/server-google-maps"\n>=> mcp_agent "airbnb" "search stays in\n    New York Apr 10-15 under $300/night"\n>=> maps_trip "NYC Airbnb Options"`
+      icon:'🗄️',title:'SQLite + AI Analysis',
+      desc:'Connect to any SQLite database via MCP, query your data with natural language, and have AI analyze the results.',
+      file:'sqlite-analysis.as',
+      code:`mcp_connect "db"\n    "npx -y @modelcontextprotocol/server-sqlite\n    customers.db"\n\n>=> mcp_agent "db" "get total revenue by\n    product category for the last quarter"\n>=> claude "Analyze this data: identify\n    top performers, trends, and\n    recommendations for next quarter"\n>=> save "quarterly-analysis.md"`
     },
     {
       icon:'🗄️',title:'SQLite → Maps → Slack',
       desc:'Query your customer database, geocode addresses, compute an optimal sales road trip, and push the route to Slack.',
-      code:`mcp_connect "db" "npx -y @mcp/server-sqlite\n    customers.db"\nmcp_connect "maps" "npx -y @mcp/server-google-maps"\n>=> mcp_agent "db" "get all customer names,\n    addresses, cities from customers table"\n>=> ask "optimal 3-day sales road trip"\n>=> maps_trip "Sales Road Trip"`
+      file:'sqlite-maps-slack.as',
+      code:`mcp_connect "db" "npx -y @modelcontextprotocol/server-sqlite\n    customers.db"\nmcp_connect "maps" "npx -y @modelcontextprotocol/server-google-maps"\n>=> mcp_agent "db" "get all customer names,\n    addresses, cities from customers table"\n>=> ask "optimal 3-day sales road trip"\n>=> maps_trip "Sales Road Trip"`
     },
     {
       icon:'🎬',title:'YouTube Transcript Research',
       desc:'Pull transcripts from YouTube talks via MCP, cross-reference with Perplexity AI trends, and synthesize learning recommendations.',
+      file:'youtube-research.as',
       code:`mcp_connect "yt" "npx -y yt-mcp"\n>=> (\n  mcp_agent "yt" "get transcript of the most\n      viewed Go conference talk this year"\n  <*> perplexity_recent "Go trends 2026" "month"\n)\n>=> merge\n>=> ask "What should I learn based on\n    conference talks and current trends?"\n>=> email "me@company.com"`
     },
     {
       icon:'📂',title:'Filesystem → Docs → Email',
       desc:'Read source code from your local filesystem via MCP, auto-generate documentation with AI, save to Google Docs, and email the team.',
-      code:`mcp_connect "fs" "npx -y @mcp/server-filesystem ."\n>=> mcp "fs:read_file" '{"path": "main.go"}'\n>=> ask "Document this codebase"\n>=> doc_create "Code Documentation"\n>=> email "team@company.com"`
+      file:'mcp-document-code.as',
+      code:`mcp_connect "fs" "npx -y @modelcontextprotocol/server-filesystem ."\n>=> mcp "fs:read_file" '{"path": "main.go"}'\n>=> ask "Document this codebase"\n>=> doc_create "Code Documentation"\n>=> email "team@company.com"`
     },
     {
       icon:'📊',title:'HuggingFace Sentiment + Stocks',
       desc:'Run financial news through HuggingFace FinBERT for real-time sentiment classification, combine with live stock data for AI-powered trade analysis.',
+      file:'sentiment-stock.as',
       code:`( stock "NVDA"\n  <*> news "NVIDIA earnings AI"\n     >=> hf_classify "ProsusAI/finbert"\n)\n>=> merge\n>=> ask "Analyze NVIDIA: combine price\n    data with news sentiment scores"\n>=> save "nvda-analysis.md"`
     },
     {
       icon:'🏠',title:'Home Assistant IoT Control',
       desc:'Connect to your entire smart home. Control lights, arm security systems, check Ring doorbells, query device history — from a script.',
+      file:'ha-lights-on.as',
       code:`mcp_connect "ha" "npx -y @ha/mcp@latest"\n>=> mcp_agent "ha" "turn_on light.living_room\n    brightness 255 rgb_color 0 255 100"\n\n// Check Ring motion history\nmcp_agent "ha" "get_history for\n    sensor.front_door_last_activity"\n>=> ask "Write a security alert"\n>=> notify "slack"`
     },
     {
       icon:'🐙',title:'GitHub Code Review → Issues',
       desc:'Read source code via MCP, run a focused code review with AI, and automatically create GitHub issues with the findings.',
-      code:`mcp_connect "github" "npx -y @mcp/server-github"\n>=> read "pkg/agent/agent.go"\n>=> codereview_focus "error handling" "2"\n>=> mcp_agent "github" "create an issue in\n    my-org/my-repo with the code review\n    findings as the body"`
+      file:'review-to-issue.as',
+      code:`mcp_connect "github" "npx -y @modelcontextprotocol/server-github"\n>=> read "pkg/agent/agent.go"\n>=> codereview_focus "error handling" "2"\n>=> mcp_agent "github" "create an issue in\n    my-org/my-repo with the code review\n    findings as the body"`
     },
     {
       icon:'🔍',title:'Discover + Install Any MCP Server',
       desc:'Search the official MCP registry for any capability you need — databases, APIs, services. AgentScript finds it and gives you the connect command.',
-      code:`// Find MCP servers for any use case\nmcp_search "home automation"\nmcp_search "postgres database"\nmcp_search "slack integration"\nmcp_search "kubernetes"\n\n// Get the install command instantly\nmcp_search_install "server-name"\n// → mcp_connect "name" "npx -y ..."`
+      file:'mcp-search.as',
+      code:`// Find MCP servers for any use case\nmcp_search "home automation"\nmcp_search "postgres database"\nmcp_search "slack integration"\nmcp_search "kubernetes"\n\n// Install and connect in one step\nmcp_search_install "server-postgres"`
     },
   ];
-  function hl(code){
-    return code
-      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
-      .replace(/(\/\/[^\n]*)/g,'\x01$1\x02')
-      .replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g,'\x03$1\x04')
-      .replace(/(&gt;=&gt;|&lt;\*&gt;)/g,'\x05$1\x06')
-      .replace(/\b(mcp_connect|mcp_agent|mcp_search_install|mcp_search|mcp|search|summarize|ask|analyze|save|read|merge|email|notify|stock|news|hf_classify|hf_generate|hf_summarize|hf_ner|hf_translate|hf_qa|hf_zero_shot|perplexity_recent|maps_trip|doc_create|codereview_focus|codereview|pdf_fill|pdf_fields)\b/g,'<span class="k">$1</span>')
-      .replace(/\x01([\s\S]*?)\x02/g,'<span class="c">$1</span>')
-      .replace(/\x03([\s\S]*?)\x04/g,'<span class="s">$1</span>')
-      .replace(/\x05([\s\S]*?)\x06/g,'<span class="o">$1</span>');
-  }
   return <section id="mcp" className="mcp-hero" style={{background:'var(--bg2)'}}>
     <div className="mcp-glow-1 hero-glow"/><div className="mcp-glow-2 hero-glow"/>
     <div className="container" style={{position:'relative',zIndex:1}}>
@@ -412,7 +586,7 @@ function MCPEcosystem(){
             <div className="mcp-flow-box mcp-flow-servers">🗄️ SQLite</div>
             <div className="mcp-flow-box mcp-flow-servers">🐙 GitHub</div>
             <div className="mcp-flow-box mcp-flow-servers">🗺️ Google Maps</div>
-            <div className="mcp-flow-box mcp-flow-servers">🏘️ Airbnb</div>
+            <div className="mcp-flow-box mcp-flow-servers">📊 Postgres</div>
             <div className="mcp-flow-box mcp-flow-servers">🏠 Home Assistant</div>
             <div className="mcp-flow-box mcp-flow-servers">📂 Filesystem</div>
           </div>
@@ -437,7 +611,7 @@ function MCPEcosystem(){
             <h4>{ex.title}</h4>
           </div>
           <p>{ex.desc}</p>
-          <div className="mcp-card-code" dangerouslySetInnerHTML={{__html:hl(ex.code)}}/>
+          <CodeBlock item={ex}/>
         </div>)}
       </div>
 
@@ -490,12 +664,12 @@ function HowItWorks(){
   return <section id="how" style={{background:'var(--bg2)'}}>
     <div className="container">
       <div className="section-label">How It Works</div>
-      <div className="section-title">Download. Write. Run.</div>
-      <p className="section-sub">No SDKs to learn. No infrastructure to manage. A single binary and your imagination.</p>
+      <div className="section-title">How teams get started.</div>
+      <p className="section-sub">We work directly with your team to deploy AgentScript into your infrastructure. No self-serve, no guesswork.</p>
       <div className="steps">
-        <div className="step"><h3>Download the binary</h3><p>One file for your platform. No dependencies, no Docker, no runtime. Drop it in your PATH and you're ready.</p></div>
-        <div className="step"><h3>Write your automation</h3><p>Chain commands into pipelines. Run tasks in parallel. Branch on conditions. Simple one-liners or multi-file production scripts — your call.</p></div>
-        <div className="step"><h3>Run, schedule, or deploy</h3><p>Execute from the terminal, run script files, start an interactive REPL, or deploy to Cloud Run on a cron. Your automation, your infrastructure.</p></div>
+        <div className="step"><h3>Book a demo</h3><p>We'll walk your team through real use cases tailored to your industry — compliance, finance, DevOps, or operations. See exactly how AgentScript fits your workflows.</p></div>
+        <div className="step"><h3>Pilot with your data</h3><p>We help you build your first production pipelines using your actual data sources, APIs, and tools. Prove value in days, not months.</p></div>
+        <div className="step"><h3>Deploy &amp; scale</h3><p>On-prem or cloud. We handle installation, custom integrations, team onboarding, and ongoing support. Your automation, your infrastructure, our expertise.</p></div>
       </div>
     </div>
   </section>;
@@ -512,7 +686,7 @@ function Integrations(){
     {i:'🐙',n:'GitHub (MCP)'},{i:'🏠',n:'Home Assistant'},{i:'📋',n:'PDF Forms'},
     {i:'🛡️',n:'SSL / TLS'},{i:'🌐',n:'DNS / WHOIS'},{i:'🖼️',n:'Imagen 4'},
     {i:'🎥',n:'Veo 3.1 Video'},{i:'🗣️',n:'Text-to-Speech'},{i:'☁️',n:'Cloud Run'},
-    {i:'🗄️',n:'SQLite (MCP)'},{i:'🗺️',n:'Google Maps (MCP)'},{i:'🏘️',n:'Airbnb (MCP)'},
+    {i:'🗄️',n:'SQLite (MCP)'},{i:'🗺️',n:'Google Maps (MCP)'},{i:'📊',n:'Postgres (MCP)'},
     {i:'🤗',n:'HuggingFace'},
   ];
   return <section id="integrations">
@@ -527,61 +701,95 @@ function Integrations(){
   </section>;
 }
 
-function Download(){
-  const builds=[
-    {os:'macOS',arch:'Apple Silicon (arm64)',icon:'🍎',file:'agentscript-darwin-arm64',tag:'Recommended'},
-    {os:'macOS',arch:'Intel (amd64)',icon:'🍎',file:'agentscript-darwin-amd64',tag:null},
-    {os:'Linux',arch:'x86_64 (amd64)',icon:'🐧',file:'agentscript-linux-amd64',tag:null},
-    {os:'Linux',arch:'ARM64',icon:'🐧',file:'agentscript-linux-arm64',tag:null},
-    {os:'Windows',arch:'x86_64 (amd64)',icon:'🪟',file:'agentscript-windows-amd64.exe',tag:null},
+function Enterprise(){
+  const features=[
+    {icon:'🔒',title:'On-Prem or Private Cloud',desc:'Deploy AgentScript inside your network. Your data never leaves your infrastructure. Air-gapped environments supported.'},
+    {icon:'🛡️',title:'Security & Compliance',desc:'SOC 2 ready. SSL/TLS auditing built in. Role-based access, audit logging, and encrypted credential management.'},
+    {icon:'🔌',title:'Custom Integrations',desc:'We build custom plugins for your internal APIs, databases, and legacy systems. Two-method plugin interface — anything can be connected.'},
+    {icon:'📊',title:'Live Dashboards',desc:'AI-generated interactive dashboards from any JSON data source. Static, REST polling, Server-Sent Events, or WebSocket — real-time visibility.'},
+    {icon:'🤝',title:'Dedicated Support',desc:'Named support engineer, priority SLA, quarterly business reviews. We succeed when your automations succeed.'},
+    {icon:'☁️',title:'Managed Scheduling',desc:'Cloud Run deployment with cron scheduling. Your pipelines run on your schedule — daily briefings, hourly monitoring, continuous compliance.'},
   ];
-  return <section id="download" style={{background:'var(--bg2)'}}>
+  return <section id="enterprise" style={{background:'var(--bg2)'}}>
     <div className="container">
-      <div className="section-label">Download</div>
-      <div className="section-title">Get AgentScript.</div>
-      <p className="section-sub">Single binary, zero dependencies. Download, add your API key, and start automating in under a minute.</p>
-      <div className="downloads-grid">
-        {builds.map((b,i)=><a className="dl-card" key={i} href={`/releases/latest/${b.file}`} download>
-          <div className="dl-icon">{b.icon}</div>
-          <div className="dl-info"><h4>{b.os}</h4><p>{b.arch}</p></div>
-          {b.tag&&<span className="dl-tag">{b.tag}</span>}
-        </a>)}
+      <div className="section-label">Enterprise</div>
+      <div className="section-title">Built for teams that<br/>take automation seriously.</div>
+      <p className="section-sub" style={{maxWidth:620}}>
+        AgentScript is licensed directly to organizations under enterprise agreements.
+        We work with your team to deploy, integrate, and support production automation
+        pipelines — tailored to your infrastructure and compliance requirements.
+      </p>
+      <div className="features-grid" style={{marginTop:48}}>
+        {features.map((f,i)=><div className="feature-card" key={i}>
+          <div className="feature-icon">{f.icon}</div>
+          <h3>{f.title}</h3>
+          <p>{f.desc}</p>
+        </div>)}
       </div>
-      <div className="dl-note">
-        <strong>License:</strong> AgentScript is proprietary software. Each download includes a 14-day free trial. A license key is required for continued use — see <a href="#pricing" style={{color:'var(--accent)',textDecoration:'none'}}>Pricing</a>.
+      <div style={{marginTop:56,padding:'40px',background:'var(--bg)',border:'1px solid var(--border)',borderRadius:14,display:'flex',alignItems:'center',justifyContent:'space-between',flexWrap:'wrap',gap:24}}>
+        <div>
+          <h3 style={{fontSize:22,fontWeight:700,marginBottom:6}}>Ready to see it in action?</h3>
+          <p style={{fontSize:15,color:'var(--text-dim)'}}>We'll demo AgentScript with your real use cases — compliance, finance, DevOps, or operations.</p>
+        </div>
+        <a href="#contact" className="btn-primary" style={{flexShrink:0}}>Book a Demo →</a>
+      </div>
+      <div style={{marginTop:24,display:'flex',gap:16,flexWrap:'wrap'}}>
+        <div style={{flex:1,minWidth:200,padding:'20px 24px',background:'var(--bg)',border:'1px solid var(--border)',borderRadius:10,textAlign:'center'}}>
+          <div style={{fontSize:28,fontWeight:800,fontFamily:'var(--display)',color:'var(--accent)'}}>macOS</div>
+          <div style={{fontSize:12,color:'var(--text-dim)',marginTop:4}}>Apple Silicon &amp; Intel</div>
+        </div>
+        <div style={{flex:1,minWidth:200,padding:'20px 24px',background:'var(--bg)',border:'1px solid var(--border)',borderRadius:10,textAlign:'center'}}>
+          <div style={{fontSize:28,fontWeight:800,fontFamily:'var(--display)',color:'var(--accent)'}}>Linux</div>
+          <div style={{fontSize:12,color:'var(--text-dim)',marginTop:4}}>x86_64 &amp; ARM64</div>
+        </div>
+        <div style={{flex:1,minWidth:200,padding:'20px 24px',background:'var(--bg)',border:'1px solid var(--border)',borderRadius:10,textAlign:'center'}}>
+          <div style={{fontSize:28,fontWeight:800,fontFamily:'var(--display)',color:'var(--accent)'}}>Windows</div>
+          <div style={{fontSize:12,color:'var(--text-dim)',marginTop:4}}>x86_64 via Bash/WSL</div>
+        </div>
+        <div style={{flex:1,minWidth:200,padding:'20px 24px',background:'var(--bg)',border:'1px solid var(--border)',borderRadius:10,textAlign:'center'}}>
+          <div style={{fontSize:28,fontWeight:800,fontFamily:'var(--display)',color:'var(--accent)'}}>Docker</div>
+          <div style={{fontSize:12,color:'var(--text-dim)',marginTop:4}}>Containerized deployment</div>
+        </div>
       </div>
     </div>
   </section>;
 }
 
-function Pricing(){
-  const tiers=[
-    {tier:'Starter',price:'$29',period:'/mo',featured:false,
-     desc:'For individuals automating personal and freelance workflows.',
-     features:['All 45+ commands & integrations','Unlimited local pipelines','PDF form filling','Email, Slack, Discord notifications','Community support'],
-     btn:'Start Free Trial',cls:'price-btn price-btn-s'},
-    {tier:'Professional',price:'$99',period:'/mo',featured:true,
-     desc:'For teams shipping production automations and scheduled jobs.',
-     features:['Everything in Starter','Cloud Run deploy & cron scheduling','MCP server connections (unlimited)','Smart Home / IoT integrations','Priority email support','Up to 10 seats'],
-     btn:'Start Free Trial',cls:'price-btn price-btn-p'},
-    {tier:'Enterprise',price:'Custom',period:'',featured:false,
-     desc:'For organizations needing custom plugins, SLAs, and on-prem.',
-     features:['Everything in Professional','Custom plugin development','Dedicated support engineer','SSO & audit logging','On-prem deployment option','Unlimited seats'],
-     btn:'Contact Sales',cls:'price-btn price-btn-s'},
-  ];
-  return <section id="pricing">
+function WhyEnterprise(){
+  return <section id="why">
     <div className="container">
-      <div className="section-label">Pricing</div>
-      <div className="section-title">Simple, transparent pricing.</div>
-      <p className="section-sub">Start with a 14-day free trial. No credit card required.</p>
-      <div className="pricing-grid">
-        {tiers.map((t,i)=><div className={`price-card ${t.featured?'featured':''}`} key={i}>
-          <div className="price-tier">{t.tier}</div>
-          <div className="price-amt">{t.price}<span>{t.period}</span></div>
-          <p className="price-desc">{t.desc}</p>
-          <ul className="price-features">{t.features.map((f,j)=><li key={j}>{f}</li>)}</ul>
-          <a href="#contact" className={t.cls}>{t.btn}</a>
-        </div>)}
+      <div className="section-label">Why AgentScript</div>
+      <div className="section-title">Their UI is the product.<br/>Our DSL <em style={{fontFamily:'var(--display)',fontStyle:'italic',background:'linear-gradient(135deg,var(--accent),var(--accent2))',WebkitBackgroundClip:'text',WebkitTextFillColor:'transparent'}}>is</em> the product.</div>
+      <p className="section-sub" style={{maxWidth:640}}>
+        Drag-and-drop automation tools look great in demos. But when you need to version
+        control a workflow, code review a change, run it on a schedule, compose it with
+        other pipelines, or hand it to a new team member — you need a language, not a canvas.
+      </p>
+      <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))',gap:20,marginTop:48}}>
+        <div style={{padding:'32px',background:'var(--bg2)',border:'1px solid var(--border)',borderRadius:14}}>
+          <h3 style={{fontSize:18,fontWeight:600,marginBottom:10}}>Version Control</h3>
+          <p style={{fontSize:14,color:'var(--text-dim)',lineHeight:1.65}}>Every pipeline is a text file. Git diff, code review, branch, merge — your automation gets the same rigor as your codebase.</p>
+        </div>
+        <div style={{padding:'32px',background:'var(--bg2)',border:'1px solid var(--border)',borderRadius:14}}>
+          <h3 style={{fontSize:18,fontWeight:600,marginBottom:10}}>Composability</h3>
+          <p style={{fontSize:14,color:'var(--text-dim)',lineHeight:1.65}}>Pipelines compose with other pipelines. Run 10 tasks in parallel, merge the results, branch on conditions, alert on failures — in readable text.</p>
+        </div>
+        <div style={{padding:'32px',background:'var(--bg2)',border:'1px solid var(--border)',borderRadius:14}}>
+          <h3 style={{fontSize:18,fontWeight:600,marginBottom:10}}>No Vendor Lock-in</h3>
+          <p style={{fontSize:14,color:'var(--text-dim)',lineHeight:1.65}}>A single binary on your infrastructure. No cloud dependency, no per-execution pricing, no data leaving your network unless you want it to.</p>
+        </div>
+        <div style={{padding:'32px',background:'var(--bg2)',border:'1px solid var(--border)',borderRadius:14}}>
+          <h3 style={{fontSize:18,fontWeight:600,marginBottom:10}}>AI-Native</h3>
+          <p style={{fontSize:14,color:'var(--text-dim)',lineHeight:1.65}}>Built for the agentic era. Claude, Gemini, GPT-4, HuggingFace, and Perplexity are first-class citizens, not bolted-on integrations.</p>
+        </div>
+        <div style={{padding:'32px',background:'var(--bg2)',border:'1px solid var(--border)',borderRadius:14}}>
+          <h3 style={{fontSize:18,fontWeight:600,marginBottom:10}}>MCP Ecosystem</h3>
+          <p style={{fontSize:14,color:'var(--text-dim)',lineHeight:1.65}}>10,000+ MCP servers and growing. Connect any database, API, smart home device, or cloud service with a single line.</p>
+        </div>
+        <div style={{padding:'32px',background:'var(--bg2)',border:'1px solid var(--border)',borderRadius:14}}>
+          <h3 style={{fontSize:18,fontWeight:600,marginBottom:10}}>Extensible</h3>
+          <p style={{fontSize:14,color:'var(--text-dim)',lineHeight:1.65}}>Two-method plugin interface. Your engineering team can build custom commands for internal systems in hours, not weeks.</p>
+        </div>
       </div>
     </div>
   </section>;
@@ -591,35 +799,71 @@ function Contact(){
   const[sent,setSent]=useState(false);
   return <section id="contact" style={{background:'var(--bg2)'}}>
     <div className="container">
-      <div className="section-label">Get in Touch</div>
-      <div className="section-title">Let's talk.</div>
+      <div className="section-label">Contact</div>
+      <div className="section-title">Let's build something.</div>
       <div className="contact-grid">
         <div className="contact-info">
-          <h3>Ready to automate?</h3>
-          <p>Whether you need a demo, want to discuss custom integrations, or are evaluating AgentScript for your team — we'd love to hear from you.</p>
-          <div className="contact-detail"><div className="contact-detail-icon">📧</div><a href="mailto:hello@agentscript.dev">hello@agentscript.dev</a></div>
+          <h3>See AgentScript in action.</h3>
+          <p>Tell us about your automation challenges. We'll show you how AgentScript
+            solves them — with a live demo using your real use cases.
+            No slides, no fluff. Just working pipelines.</p>
+          <div className="contact-detail"><div className="contact-detail-icon">📧</div><a href="mailto:enterprise@agentscript.dev">enterprise@agentscript.dev</a></div>
           <div className="contact-detail"><div className="contact-detail-icon">💬</div><a href="https://twitter.com/agentscript">@agentscript</a></div>
           <div className="contact-detail"><div className="contact-detail-icon">📍</div><span style={{color:'var(--text-mid)'}}>San Francisco, CA</span></div>
         </div>
         <div>
           {sent?<div style={{padding:'48px',textAlign:'center',background:'var(--bg)',border:'1px solid var(--border)',borderRadius:'14px'}}>
             <div style={{fontSize:48,marginBottom:16}}>✓</div>
-            <h3 style={{marginBottom:8}}>Message sent!</h3>
-            <p style={{color:'var(--text-dim)',fontSize:14}}>We'll get back to you within 24 hours.</p>
+            <h3 style={{marginBottom:8}}>We'll be in touch.</h3>
+            <p style={{color:'var(--text-dim)',fontSize:14}}>Expect to hear from us within one business day.</p>
           </div>:
-          <form className="contact-form" onSubmit={e=>{e.preventDefault();setSent(true)}}>
+          <form className="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" onSubmit={e=>{
+            e.preventDefault();
+            fetch(e.target.action,{method:'POST',body:new FormData(e.target),headers:{'Accept':'application/json'}})
+              .then(r=>{if(r.ok)setSent(true);else alert('Something went wrong. Please email enterprise@agentscript.dev directly.')})
+              .catch(()=>alert('Network error. Please email enterprise@agentscript.dev directly.'));
+          }}>
             <div className="form-row">
-              <div className="form-group"><label>Name</label><input type="text" placeholder="Jane Smith" required/></div>
-              <div className="form-group"><label>Email</label><input type="email" placeholder="jane@company.com" required/></div>
+              <div className="form-group"><label>Name</label><input type="text" name="name" placeholder="Jane Smith" required/></div>
+              <div className="form-group"><label>Work Email</label><input type="email" name="email" placeholder="jane@company.com" required/></div>
             </div>
-            <div className="form-group"><label>Interest</label>
-              <select defaultValue=""><option value="" disabled>Select one...</option>
-                <option>Free trial / Demo</option><option>Professional license</option>
-                <option>Enterprise / Custom</option><option>Partnership</option><option>Other</option>
+            <div className="form-row">
+              <div className="form-group"><label>Company</label><input type="text" name="company" placeholder="Acme Corp" required/></div>
+              <div className="form-group"><label>Role</label><input type="text" name="role" placeholder="CTO, VP Engineering, etc."/></div>
+            </div>
+            <div className="form-group"><label>Your Industry</label>
+              <select name="industry" defaultValue=""><option value="" disabled>Select your industry...</option>
+                <option>Financial Services / Banking</option>
+                <option>Healthcare / Life Sciences</option>
+                <option>Legal / Compliance</option>
+                <option>Real Estate / Property Management</option>
+                <option>SaaS / Technology</option>
+                <option>Manufacturing / Supply Chain</option>
+                <option>Government / Public Sector</option>
+                <option>E-Commerce / Retail</option>
+                <option>Consulting / Professional Services</option>
+                <option>Other</option>
               </select>
             </div>
-            <div className="form-group"><label>Message</label><textarea placeholder="Tell us about your use case..." required/></div>
-            <button type="submit" className="btn-primary" style={{alignSelf:'flex-start'}}>Send Message →</button>
+            <div className="form-group"><label>What would you like us to demo?</label>
+              <select name="demo_focus" defaultValue=""><option value="" disabled>Pick a focus area...</option>
+                <option>Compliance & Security Auditing</option>
+                <option>Invoice & Document Processing</option>
+                <option>Infrastructure Monitoring & Dashboards</option>
+                <option>Research & Intelligence Reports</option>
+                <option>DevOps & Code Review Automation</option>
+                <option>IoT / Smart Building Management</option>
+                <option>Custom Integration / Plugin Development</option>
+                <option>Not sure yet — show me what's possible</option>
+              </select>
+            </div>
+            <div className="form-group"><label>Tell us about your workflow</label><textarea name="message" placeholder="What does your team spend the most time on manually? What systems do you use today? What does success look like for you?" required/></div>
+            <p style={{fontSize:12,color:'var(--text-dim)',lineHeight:1.6,marginTop:4}}>
+              We tailor every demo to your domain and data. The more context you share,
+              the more relevant the demo will be — we'll build live pipelines using your
+              actual use cases during the call.
+            </p>
+            <button type="submit" className="btn-primary" style={{alignSelf:'flex-start'}}>Book a Demo →</button>
           </form>}
         </div>
       </div>
@@ -644,9 +888,9 @@ function App(){
     <HowItWorks/>
     <div className="divider"/>
     <Integrations/>
-    <Download/>
+    <Enterprise/>
     <div className="divider"/>
-    <Pricing/>
+    <WhyEnterprise/>
     <Contact/>
     <Footer/>
   </>;
