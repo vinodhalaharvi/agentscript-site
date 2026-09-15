@@ -17,8 +17,6 @@
 <meta property="og:description" content="An s-expression language for agent pipelines. Two forms — (pipe ...) and (par ...) — compose AI models, 10,000+ MCP servers and 45+ integrations. Runs in-process or as a durable Temporal workflow.">
 <meta property="og:site_name" content="AgentScript">
 <meta property="og:locale" content="en_US">
-<meta property="og:video" content="https://agentscript.dev/demo.mp4">
-<meta property="og:video:type" content="video/mp4">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
@@ -85,8 +83,8 @@
   },
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "San Francisco",
-    "addressRegion": "CA",
+    "addressLocality": "Sterling",
+    "addressRegion": "VA",
     "addressCountry": "US"
   },
   "sameAs": [
@@ -155,7 +153,7 @@ nav.scrolled{padding:12px 0;background:rgba(8,8,10,.92)}
 .terminal-dot{width:10px;height:10px;border-radius:50%}
 .dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
 .terminal-title{flex:1;text-align:center;font-family:var(--mono);font-size:11px;color:var(--text-dim)}
-.terminal-body{padding:24px;font-family:var(--mono);font-size:12.5px;line-height:1.9;overflow-x:auto}
+.terminal-body{padding:24px;font-family:var(--mono);font-size:12.5px;line-height:1.9;overflow-x:auto;white-space:pre}
 .t-prompt{color:var(--accent);user-select:none}.t-cmd{color:var(--text)}.t-cmt{color:var(--text-dim);font-style:italic}.t-out{color:var(--accent2);padding-left:20px}.t-dim{color:var(--text-dim)}.t-kw{color:var(--accent)}.t-str{color:var(--accent2)}.t-op{color:var(--accent3)}
 
 /* SECTIONS */
@@ -184,10 +182,6 @@ section{padding:120px 0;position:relative}
 .run-copy-btn:hover{border-color:var(--accent);color:var(--accent)}
 
 /* DEMO VIDEO */
-.demo-video{margin-top:64px;opacity:0;animation:fadeUp .9s .85s ease-out forwards}
-.demo-video-label{text-align:center;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent);letter-spacing:2px;text-transform:uppercase;margin-bottom:16px}
-.demo-video-wrap{border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--bg2)}
-.demo-video-wrap video{width:100%;display:block}
 
 /* HOW IT WORKS */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:56px;counter-reset:step}
@@ -322,7 +316,7 @@ footer{padding:48px 0;border-top:1px solid var(--border)}
 <p>On-premise or private cloud deployment. Custom plugin development. Dedicated support. SOC 2 ready. SSO and audit logging. Contact vinod.halaharvi@gmail.com to book a demo.</p>
 <h2>Why AgentScript</h2>
 <p>Their UI is the product. Our DSL is the product. Version control, composability, no vendor lock-in, AI-native, 10,000+ MCP servers, extensible plugin architecture.</p>
-<p>Contact: <a href="mailto:vinod.halaharvi@gmail.com">vinod.halaharvi@gmail.com</a> | San Francisco, CA | © 2026 AgentScript Labs LLC</p>
+<p>Contact: <a href="mailto:vinod.halaharvi@gmail.com">vinod.halaharvi@gmail.com</a> | Sterling, VA | © 2026 AgentScript Labs LLC</p>
 </noscript>
 <script type="text/babel">
 const{useState,useEffect}=React;
@@ -381,15 +375,6 @@ function Hero(){
         {t:'  (<span class="t-kw">notify</span> <span class="t-str">"slack"</span>))'},
       ].map((l,i)=><div key={i} style={{opacity:0,animation:`fadeUp .4s ${.9+i*.08}s ease-out forwards`}} dangerouslySetInnerHTML={{__html:l.t}}/>)}
     </div></div>
-    <div className="demo-video">
-      <div className="demo-video-label">Watch the Demo</div>
-      <div className="demo-video-wrap">
-        <video controls preload="metadata" poster="">
-          <source src="/demo.mp4" type="video/mp4"/>
-          Your browser does not support the video tag.
-        </video>
-      </div>
-    </div>
     </div>
   </section>;
 }
@@ -831,7 +816,7 @@ function Contact(){
             No slides, no fluff. Just working pipelines.</p>
           <div className="contact-detail"><div className="contact-detail-icon">📧</div><a href="mailto:vinod.halaharvi@gmail.com">vinod.halaharvi@gmail.com</a></div>
           <div className="contact-detail"><div className="contact-detail-icon">🐙</div><a href="https://github.com/vinodhalaharvi">github.com/vinodhalaharvi</a></div>
-          <div className="contact-detail"><div className="contact-detail-icon">📍</div><span style={{color:'var(--text-mid)'}}>San Francisco, CA</span></div>
+          <div className="contact-detail"><div className="contact-detail-icon">📍</div><span style={{color:'var(--text-mid)'}}>Sterling, VA</span></div>
         </div>
         <div>
           {sent?<div style={{padding:'48px',textAlign:'center',background:'var(--bg)',border:'1px solid var(--border)',borderRadius:'14px'}}>
