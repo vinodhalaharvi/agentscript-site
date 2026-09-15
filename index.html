@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AgentScript — Enterprise AI Automation Platform | Scripting in the Agentic Era</title>
-<meta name="description" content="AgentScript is an enterprise automation platform that connects AI (Claude, Gemini, GPT-4), 10,000+ MCP servers, and 45+ integrations into powerful scripting pipelines. Compliance auditing, invoice processing, infrastructure monitoring, and more — from readable scripts.">
-<meta name="keywords" content="enterprise automation, AI automation platform, MCP orchestration, compliance automation, invoice processing, infrastructure monitoring, agentic AI, scripting language, pipeline automation, Claude AI, Gemini AI, energy automation, DevOps automation, PDF form filling">
+<title>AgentScript — S-Expression Automation Language for AI Agents | Enterprise MCP Orchestration</title>
+<meta name="description" content="AgentScript is an s-expression automation language for AI agents. Compose Claude, Gemini and GPT-4 with 10,000+ MCP servers and 45+ integrations using two forms: (pipe ...) for sequential steps and (par ...) for parallel fan-out. Run in-process or as durable Temporal workflows.">
+<meta name="keywords" content="s-expression DSL, agent orchestration language, AI automation platform, MCP client, MCP orchestration, lisp-style automation, agentic AI scripting, pipeline automation language, parallel fan-out, durable workflows, Temporal workflow DSL, Claude AI automation, Gemini AI automation, enterprise automation, compliance automation, invoice processing, infrastructure monitoring, PDF form filling, DevOps automation">
 <meta name="author" content="AgentScript Labs LLC">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://agentscript.dev/">
@@ -13,16 +13,18 @@
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://agentscript.dev/">
-<meta property="og:title" content="AgentScript — Scripting in the Agentic Era">
-<meta property="og:description" content="Enterprise AI automation platform. Connect Claude, Gemini, GPT-4, 10,000+ MCP servers, and 45+ integrations into powerful scripting pipelines. Compliance, invoice processing, infrastructure monitoring — from readable scripts.">
+<meta property="og:title" content="AgentScript — S-Expression Automation for AI Agents">
+<meta property="og:description" content="An s-expression language for agent pipelines. Two forms — (pipe ...) and (par ...) — compose AI models, 10,000+ MCP servers and 45+ integrations. Runs in-process or as a durable Temporal workflow.">
 <meta property="og:site_name" content="AgentScript">
 <meta property="og:locale" content="en_US">
+<meta property="og:video" content="https://agentscript.dev/demo.mp4">
+<meta property="og:video:type" content="video/mp4">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@agentscript">
-<meta name="twitter:title" content="AgentScript — Scripting in the Agentic Era">
-<meta name="twitter:description" content="Enterprise AI automation platform. Connect AI, MCP servers, and 45+ integrations into powerful scripting pipelines.">
+<meta name="twitter:title" content="AgentScript — S-Expression Automation for AI Agents">
+<meta name="twitter:description" content="An s-expression language for agent pipelines. (pipe ...) for sequential steps, (par ...) for parallel fan-out. AI models, MCP servers and 45+ integrations.">
 
 <!-- Structured Data / JSON-LD -->
 <script type="application/ld+json">
@@ -32,8 +34,11 @@
   "name": "AgentScript",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "macOS, Linux, Windows",
-  "description": "Enterprise AI automation platform that connects Claude, Gemini, GPT-4, 10,000+ MCP servers, and 45+ integrations into powerful scripting pipelines.",
+  "description": "An s-expression automation language for AI agents. Composes Claude, Gemini, GPT-4, 10,000+ MCP servers and 45+ integrations into pipelines that run in-process or as durable Temporal workflows.",
   "url": "https://agentscript.dev",
+  "codeRepository": "https://github.com/vinodhalaharvi/agentscript",
+  "programmingLanguage": "AgentScript",
+  "runtimePlatform": "Go",
   "author": {
     "@type": "Organization",
     "name": "AgentScript Labs LLC",
@@ -46,6 +51,9 @@
     "description": "Enterprise licensing with custom integrations and dedicated support"
   },
   "featureList": [
+    "S-expression syntax — (pipe ...) for sequential composition, (par ...) for parallel fan-out",
+    "Backend selected in the source, not by a runtime flag",
+    "Durable execution as Temporal workflows",
     "AI Automation (Claude, Gemini, GPT-4, Perplexity, HuggingFace)",
     "10,000+ MCP Server Integrations",
     "PDF Form Filling with AI",
@@ -342,9 +350,11 @@ function Hero(){
       <div className="hero-badge"><span className="hero-badge-dot"/>Now available for enterprise teams</div>
       <h1>Scripting in the<br/><em>agentic era.</em></h1>
       <p className="hero-sub">
-        AgentScript is a powerful scripting language that connects AI, APIs, and your entire
-        toolkit into automation pipelines. From multi-step research to video production
-        to infrastructure monitoring — write scripts that do what used to take entire teams.
+        AgentScript is an s-expression language that connects AI, APIs, and your entire
+        toolkit into automation pipelines. Two forms carry it — <code>(pipe …)</code> runs
+        steps in sequence, <code>(par …)</code> runs them at once. From multi-step research
+        to video production to infrastructure monitoring, write scripts that do what used
+        to take entire teams.
       </p>
       <div className="hero-actions">
         <a href="#contact" className="btn-primary">Book a Demo</a>
@@ -356,18 +366,19 @@ function Hero(){
       <span className="terminal-title">daily-briefing.as</span><span/>
     </div><div className="terminal-body">
       {[
-        {t:'<span class="t-cmt">// Morning briefing — weather, markets, news, jobs</span>'},
-        {t:'( <span class="t-kw">weather</span> <span class="t-str">"San Francisco"</span>'},
-        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">crypto</span> <span class="t-str">"BTC,ETH,SOL"</span>'},
-        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">stock</span> <span class="t-str">"AAPL,GOOGL,NVDA"</span>'},
-        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">news_headlines</span> <span class="t-str">"technology"</span>'},
-        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">rss</span> <span class="t-str">"hn"</span>'},
-        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">reddit</span> <span class="t-str">"r/golang"</span> <span class="t-str">"top"</span>'},
-        {t:'  <span class="t-op">&lt;*&gt;</span> <span class="t-kw">job_search</span> <span class="t-str">"golang contract"</span> <span class="t-str">"remote"</span>'},
-        {t:')'},
-        {t:'<span class="t-op">&gt;=&gt;</span> <span class="t-kw">merge</span>'},
-        {t:'<span class="t-op">&gt;=&gt;</span> <span class="t-kw">ask</span> <span class="t-str">"Professional morning briefing"</span>'},
-        {t:'<span class="t-op">&gt;=&gt;</span> <span class="t-kw">notify</span> <span class="t-str">"slack"</span>'},
+        {t:'<span class="t-cmt">; Morning briefing — weather, markets, news, jobs</span>'},
+        {t:'<span class="t-op">(pipe</span>'},
+        {t:'  <span class="t-op">(par</span>'},
+        {t:'    (<span class="t-kw">weather</span> <span class="t-str">"San Francisco"</span>)'},
+        {t:'    (<span class="t-kw">crypto</span> <span class="t-str">"BTC,ETH,SOL"</span>)'},
+        {t:'    (<span class="t-kw">stock</span> <span class="t-str">"AAPL,GOOGL,NVDA"</span>)'},
+        {t:'    (<span class="t-kw">news_headlines</span> <span class="t-str">"technology"</span>)'},
+        {t:'    (<span class="t-kw">rss</span> <span class="t-str">"hn"</span>)'},
+        {t:'    (<span class="t-kw">reddit</span> <span class="t-str">"r/golang"</span> <span class="t-str">"top"</span>)'},
+        {t:'    (<span class="t-kw">job_search</span> <span class="t-str">"golang contract"</span> <span class="t-str">"remote"</span>))'},
+        {t:'  <span class="t-kw">merge</span>'},
+        {t:'  (<span class="t-kw">ask</span> <span class="t-str">"Professional morning briefing"</span>)'},
+        {t:'  (<span class="t-kw">notify</span> <span class="t-str">"slack"</span>))'},
       ].map((l,i)=><div key={i} style={{opacity:0,animation:`fadeUp .4s ${.9+i*.08}s ease-out forwards`}} dangerouslySetInnerHTML={{__html:l.t}}/>)}
     </div></div>
     <div className="demo-video">
@@ -385,12 +396,15 @@ function Hero(){
 
 // Shared highlight + CodeBlock — used by Showcases and MCP sections
 const KW=/\b(search|summarize|ask|analyze|save|read|merge|email|notify|pdf_fields|pdf_fill|weather|crypto|stock|news_headlines|rss|reddit|job_search|image_generate|text_to_speech|images_to_video|audio_video_merge|youtube_shorts|youtube_upload|mcp_connect|mcp_agent|mcp_search_install|mcp_search|mcp|pfmap|claude|match|contains|doc_create|calendar|maps_trip|places_search|translate|perplexity_recent|form_create|sheet_create|task|contact_find|drive_save|video_generate|video_script|codereview|codereview_focus|table_render|hf_classify|hf_generate|hf_summarize|hf_ner|hf_translate|hf_qa|hf_zero_shot)\b/g;
+const FORM=/\b(pipe|par|block|script|when|guard)\b/g;
 function hl(code){
   return code
     .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
     .replace(/(\/\/[^\n]*)/g,'\x01$1\x02')
+    .replace(/^([ \t]*;[^\n]*)/gm,'\x01$1\x02')
     .replace(/("(?:[^"\\]|\\.)*"|'(?:[^'\\]|\\.)*')/g,'\x03$1\x04')
-    .replace(/(&gt;=&gt;|&lt;\*&gt;)/g,'\x05$1\x06')
+    .replace(/(:backend|:mode)\b/g,'\x05$1\x06')
+    .replace(FORM,'\x05$1\x06')
     .replace(KW,'<span class="k">$1</span>')
     .replace(/\x01([\s\S]*?)\x02/g,'<span class="c">$1</span>')
     .replace(/\x03([\s\S]*?)\x04/g,'<span class="s">$1</span>')
@@ -408,12 +422,12 @@ function CodeBlock({item}){
     display=hl(item.code);
     copyText=item.code;
   } else if(mode==='file'){
-    copyText=(setupBlock?setupBlock+'\n\n':'')+`cat > ${item.file} << 'EOF'\n${item.code}\nEOF\n\n./agentscript -f ${item.file}`;
+    copyText=(setupBlock?setupBlock+'\n\n':'')+`cat > ${item.file} << 'EOF'\n${item.code}\nEOF\n\n./agentscript ${item.file}`;
     display=setupDisplay
       + `<span class="c">${shellEsc(`cat > ${item.file} << 'EOF'`)}</span>\n`
       + hl(item.code) + '\n'
       + `<span class="c">EOF</span>\n\n`
-      + `<span class="o">${shellEsc(`./agentscript -f ${item.file}`)}</span>`;
+      + `<span class="o">${shellEsc(`./agentscript ${item.file}`)}</span>`;
   } else {
     copyText=(setupBlock?setupBlock+'\n\n':'')+`./agentscript -e '\n${item.code}\n'`;
     display=setupDisplay
@@ -442,7 +456,7 @@ function Showcases(){
       desc:'Generate narration with AI text-to-speech, create images with Imagen, stitch them into video, merge audio, and upload to YouTube Shorts — all in one script. Full video production pipeline, zero manual editing.',
       tags:['AI Video','Text-to-Speech','Imagen','YouTube Upload'],
       file:'youtube-shorts.as',
-      code:`( ( ask "write a 30 second narration about\n    why butterflies are amazing"\n    >=> text_to_speech "Kore"\n    >=> save "narration.wav"\n  )\n  <*> ( ( image_generate "monarch butterfly close up"\n          >=> save "butterfly1.png"\n          <*> image_generate "butterflies in sunlit garden"\n          >=> save "butterfly2.png"\n        )\n        >=> merge\n        >=> images_to_video "butterfly1.png butterfly2.png"\n        >=> save "butterfly_video.mp4"\n      )\n)\n>=> merge\n>=> audio_video_merge "butterfly_shorts.mp4"`,
+      code:`(pipe\n  (par\n    (pipe\n      (ask "write a 30 second narration about\n          why butterflies are amazing")\n      (text_to_speech "Kore")\n      (save "narration.wav"))\n    (pipe\n      (par\n        (pipe (image_generate "monarch butterfly close up")\n              (save "butterfly1.png"))\n        (pipe (image_generate "butterflies in sunlit garden")\n              (save "butterfly2.png")))\n      merge\n      (images_to_video "butterfly1.png butterfly2.png")\n      (save "butterfly_video.mp4")))\n  merge\n  (audio_video_merge "butterfly_shorts.mp4"))`,
     },
     {
       title:'AI-Powered PDF Form Filling',
@@ -450,42 +464,42 @@ function Showcases(){
       tags:['PDF Forms','AI Mapping','Claude','Automation'],
       file:'pdf-fill.as',
       setup:`curl -sL "https://www.irs.gov/pub/irs-pdf/fw9.pdf" -o w9-form.pdf\n\ncat > client-data.txt << 'EOF'\nName: Sarah Mitchell\nBusiness name: Mitchell Digital Consulting LLC\nFederal tax classification: Limited liability company\nLLC classification: S corporation\nExempt payee code: 5\nAddress: 4200 Wilshire Boulevard, Suite 310\nCity: Los Angeles\nState: CA\nZIP code: 90010\nAccount numbers: 7741928\nRequester: Acme Ventures Inc, 500 Market St, SF CA 94105\nSocial Security Number: 456-78-9012\nSignature date: 03/27/2026\nEOF`,
-      code:`// Inspect form fields\npdf_fields "w9-form.pdf"\n>=> ask "what data does this form require?"\n\n// Fill it with client data\nread "client-data.txt"\n>=> pdf_fill "w9-form.pdf"`,
+      code:`; Inspect form fields\n(pipe (pdf_fields "w9-form.pdf")\n      (ask "what data does this form require?"))\n\n; Fill it with client data\n(pipe (read "client-data.txt")\n      (pdf_fill "w9-form.pdf"))`,
     },
     {
       title:'Full-Stack App Scaffolding via GitHub',
       desc:'Connect to GitHub via MCP, create a repository, and push an entire Vite + React project — package.json, components, config — all files created in parallel. Ship a working app without touching a browser.',
       tags:['GitHub MCP','React','Vite','Parallel Deploy'],
       file:'mcp-vite-project.as',
-      code:`mcp_connect "github"\n    "npx -y @modelcontextprotocol/server-github"\n\n>=> mcp_agent "github" "create a new repo\n    called hello-vite-$RANDOM with a README"\n\n>=> ( mcp_agent "github" "create index.html\n       in the new repo with a basic HTML page"\n     <*> mcp_agent "github" "create src/App.jsx\n          in the new repo with a React component\n          that says Hello from AgentScript"\n   )\n>=> merge\n>=> notify "slack"`,
+      code:`(pipe\n  (mcp_connect "github"\n      "npx -y @modelcontextprotocol/server-github")\n\n  (mcp_agent "github" "create a new repo\n      called hello-vite-1 with a README")\n\n  (par\n    (mcp_agent "github" "create index.html\n        in the new repo with a basic HTML page")\n    (mcp_agent "github" "create src/App.jsx\n        in the new repo with a React component\n        that says Hello from AgentScript"))\n  merge\n  (notify "slack"))`,
     },
     {
       title:'Network Health Dashboard',
       desc:'Scan a dozen sites in parallel — SSL certificates, ping latency, HTTP status, DNS records — merge the telemetry, have AI parse it into structured JSON, render an interactive HTML dashboard, and alert Slack if anything is degraded.',
       tags:['SSL','Ping','DNS','Dashboard','Slack Alerts'],
       file:'network-dashboard-full.as',
-      code:`(\n  pfmap "ssl_check"  "github.com,google.com,stripe.com"\n  <*> pfmap "ping"   "github.com,google.com,stripe.com"\n  <*> pfmap "http_check"\n      "https://github.com,https://google.com"\n)\n>=> merge\n>=> claude "Parse into JSON with health status"\n>=> save "network-data.json"\n\nread "network-data.json"\n>=> match\n  | contains "DOWN"     >=> notify "slack"\n  | contains "DEGRADED" >=> notify "slack"\n  | _                   >=> ask "All systems healthy"`,
+      code:`(pipe\n  (par\n    (pfmap "ssl_check"  "github.com,google.com,stripe.com")\n    (pfmap "ping"       "github.com,google.com,stripe.com")\n    (pfmap "http_check"\n        "https://github.com,https://google.com"))\n  merge\n  (claude "Parse into JSON with health status")\n  (save "network-data.json"))\n\n(pipe\n  (read "network-data.json")\n  (when "contains DOWN")\n  (notify "slack"))`,
     },
     {
       title:'Smart Home + Security',
       desc:'Connect to Home Assistant via MCP and control every device in your house — lights, alarms, sensors. Get Ring doorbell alerts, arm your security system, check battery levels, and trigger automations from simple scripts.',
       tags:['Home Assistant','Ring','MCP','IoT'],
       file:'ha-lights-on.as',
-      code:`// Turn on lights with color\nmcp_connect "ha" "npx -y @ha/mcp@latest"\n>=> mcp_agent "ha" "lights_control turn_on\n    light.living_room brightness 255\n    rgb_color 255 0 0"\n\n// Check Ring doorbell status\nmcp_agent "ha" "get state of\n    event.front_door_motion,\n    sensor.front_door_battery"\n>=> ask "Summarize Ring status"\n>=> save "ring-status.md"\n\n// Arm security\nmcp_agent "ha" "arm alarm_control_panel\n    in home mode with code 7111"`,
+      code:`; Turn on lights with color\n(pipe\n  (mcp_connect "ha" "npx -y @ha/mcp@latest")\n  (mcp_agent "ha" "lights_control turn_on\n      light.living_room brightness 255\n      rgb_color 255 0 0"))\n\n; Check Ring doorbell status\n(pipe\n  (mcp_agent "ha" "get state of\n      event.front_door_motion,\n      sensor.front_door_battery")\n  (ask "Summarize Ring status")\n  (save "ring-status.md"))\n\n; Arm security\n(mcp_agent "ha" "arm alarm_control_panel\n    in home mode with code 7111")`,
     },
     {
       title:'Multi-Source Research & Reports',
       desc:'Pull from web search, RSS feeds, Reddit, Hacker News, news APIs, and Perplexity AI — all in parallel. Merge, analyze, and push the output to Google Docs, Sheets, email, and Slack simultaneously.',
       tags:['Research','Perplexity','Google Docs','Multi-Channel'],
       file:'tech-pulse.as',
-      code:`(\n  perplexity_recent "Go language news" "week"\n  <*> perplexity_recent "AI agents" "week"\n  <*> stock "NVDA,MSFT,GOOG"\n  <*> rss "hn"\n  <*> reddit "r/golang"\n)\n>=> merge\n>=> ask "CTO morning briefing: key\n    developments, what matters, what to watch"\n>=> (\n  doc_create "Weekly Tech Brief"\n  <*> email "team@company.com"\n  <*> notify "slack"\n)`,
+      code:`(pipe\n  (par\n    (perplexity_recent "Go language news" "week")\n    (perplexity_recent "AI agents" "week")\n    (stock "NVDA,MSFT,GOOG")\n    (rss "hn")\n    (reddit "r/golang"))\n  merge\n  (ask "CTO morning briefing: key\n      developments, what matters, what to watch")\n  (par\n    (doc_create "Weekly Tech Brief")\n    (email "team@company.com")\n    (notify "slack")))`,
     },
     {
       title:'Quorum Code Review — 3 AIs Debate Your Code',
       desc:'Feed source code to Claude, Gemini, and GPT-4 simultaneously. They review it independently, then debate each other across multiple rounds. A moderator synthesizes a final verdict. Like having three senior engineers review every PR.',
       tags:['Claude','Gemini','GPT-4','Multi-Round Debate','Code Quality'],
       file:'review-to-issue.as',
-      code:`// Three AI models review your code\nread "pkg/agent/agent.go"\n>=> codereview "3"\n\n// Focused review on a specific concern\nread "main.go"\n>=> codereview_focus "error handling" "2"\n\n// Review + auto-create GitHub issue\nmcp_connect "github" "npx -y @modelcontextprotocol/server-github"\n>=> read "pkg/agent/agent.go"\n>=> codereview_focus "security" "3"\n>=> mcp_agent "github" "create an issue in\n    my-org/my-repo with the findings"`,
+      code:`; Three AI models review your code\n(pipe (read "pkg/agent/agent.go")\n      (codereview "3"))\n\n; Focused review on a specific concern\n(pipe (read "main.go")\n      (codereview_focus "error handling" "2"))\n\n; Review + auto-create GitHub issue\n(pipe\n  (mcp_connect "github"\n      "npx -y @modelcontextprotocol/server-github")\n  (read "pkg/agent/agent.go")\n  (codereview_focus "security" "3")\n  (mcp_agent "github" "create an issue in\n      my-org/my-repo with the findings"))`,
     },
   ];
   return <section id="showcases">
@@ -513,49 +527,49 @@ function MCPEcosystem(){
       icon:'🗄️',title:'SQLite + AI Analysis',
       desc:'Connect to any SQLite database via MCP, query your data with natural language, and have AI analyze the results.',
       file:'sqlite-analysis.as',
-      code:`mcp_connect "db"\n    "npx -y @modelcontextprotocol/server-sqlite\n    customers.db"\n\n>=> mcp_agent "db" "get total revenue by\n    product category for the last quarter"\n>=> claude "Analyze this data: identify\n    top performers, trends, and\n    recommendations for next quarter"\n>=> save "quarterly-analysis.md"`
+      code:`(pipe\n  (mcp_connect "db"\n      "npx -y @modelcontextprotocol/server-sqlite\n      customers.db")\n\n  (mcp_agent "db" "get total revenue by\n      product category for the last quarter")\n  (claude "Analyze this data: identify\n      top performers, trends, and\n      recommendations for next quarter")\n  (save "quarterly-analysis.md"))`
     },
     {
       icon:'🗄️',title:'SQLite → Maps → Slack',
       desc:'Query your customer database, geocode addresses, compute an optimal sales road trip, and push the route to Slack.',
       file:'sqlite-maps-slack.as',
-      code:`mcp_connect "db" "npx -y @modelcontextprotocol/server-sqlite\n    customers.db"\nmcp_connect "maps" "npx -y @modelcontextprotocol/server-google-maps"\n>=> mcp_agent "db" "get all customer names,\n    addresses, cities from customers table"\n>=> ask "optimal 3-day sales road trip"\n>=> maps_trip "Sales Road Trip"`
+      code:`(pipe\n  (mcp_connect "db" "npx -y @modelcontextprotocol/server-sqlite\n      customers.db")\n  (mcp_connect "maps" "npx -y @modelcontextprotocol/server-google-maps")\n  (mcp_agent "db" "get all customer names,\n      addresses, cities from customers table")\n  (ask "optimal 3-day sales road trip")\n  (maps_trip "Sales Road Trip"))`
     },
     {
       icon:'🎬',title:'YouTube Transcript Research',
       desc:'Pull transcripts from YouTube talks via MCP, cross-reference with Perplexity AI trends, and synthesize learning recommendations.',
       file:'youtube-research.as',
-      code:`mcp_connect "yt" "npx -y yt-mcp"\n>=> (\n  mcp_agent "yt" "get transcript of the most\n      viewed Go conference talk this year"\n  <*> perplexity_recent "Go trends 2026" "month"\n)\n>=> merge\n>=> ask "What should I learn based on\n    conference talks and current trends?"\n>=> email "me@company.com"`
+      code:`(pipe\n  (mcp_connect "yt" "npx -y yt-mcp")\n  (par\n    (mcp_agent "yt" "get transcript of the most\n        viewed Go conference talk this year")\n    (perplexity_recent "Go trends 2026" "month"))\n  merge\n  (ask "What should I learn based on\n      conference talks and current trends?")\n  (email "me@company.com"))`
     },
     {
       icon:'📂',title:'Filesystem → Docs → Email',
       desc:'Read source code from your local filesystem via MCP, auto-generate documentation with AI, save to Google Docs, and email the team.',
       file:'mcp-document-code.as',
-      code:`mcp_connect "fs" "npx -y @modelcontextprotocol/server-filesystem ."\n>=> mcp "fs:read_file" '{"path": "main.go"}'\n>=> ask "Document this codebase"\n>=> doc_create "Code Documentation"\n>=> email "team@company.com"`
+      code:`(pipe\n  (mcp_connect "fs" "npx -y @modelcontextprotocol/server-filesystem .")\n  (mcp "fs:read_file" "{\\"path\\": \\"main.go\\"}")\n  (ask "Document this codebase")\n  (doc_create "Code Documentation")\n  (email "team@company.com"))`
     },
     {
       icon:'📊',title:'HuggingFace Sentiment + Stocks',
       desc:'Run financial news through HuggingFace FinBERT for real-time sentiment classification, combine with live stock data for AI-powered trade analysis.',
       file:'sentiment-stock.as',
-      code:`( stock "NVDA"\n  <*> news "NVIDIA earnings AI"\n     >=> hf_classify "ProsusAI/finbert"\n)\n>=> merge\n>=> ask "Analyze NVIDIA: combine price\n    data with news sentiment scores"\n>=> save "nvda-analysis.md"`
+      code:`(pipe\n  (par\n    (stock "NVDA")\n    (pipe (news "NVIDIA earnings AI")\n          (hf_classify "ProsusAI/finbert")))\n  merge\n  (ask "Analyze NVIDIA: combine price\n      data with news sentiment scores")\n  (save "nvda-analysis.md"))`
     },
     {
       icon:'🏠',title:'Home Assistant IoT Control',
       desc:'Connect to your entire smart home. Control lights, arm security systems, check Ring doorbells, query device history — from a script.',
       file:'ha-lights-on.as',
-      code:`mcp_connect "ha" "npx -y @ha/mcp@latest"\n>=> mcp_agent "ha" "turn_on light.living_room\n    brightness 255 rgb_color 0 255 100"\n\n// Check Ring motion history\nmcp_agent "ha" "get_history for\n    sensor.front_door_last_activity"\n>=> ask "Write a security alert"\n>=> notify "slack"`
+      code:`(pipe\n  (mcp_connect "ha" "npx -y @ha/mcp@latest")\n  (mcp_agent "ha" "turn_on light.living_room\n      brightness 255 rgb_color 0 255 100"))\n\n; Check Ring motion history\n(pipe\n  (mcp_agent "ha" "get_history for\n      sensor.front_door_last_activity")\n  (ask "Write a security alert")\n  (notify "slack"))`
     },
     {
       icon:'🐙',title:'GitHub Code Review → Issues',
       desc:'Read source code via MCP, run a focused code review with AI, and automatically create GitHub issues with the findings.',
       file:'review-to-issue.as',
-      code:`mcp_connect "github" "npx -y @modelcontextprotocol/server-github"\n>=> read "pkg/agent/agent.go"\n>=> codereview_focus "error handling" "2"\n>=> mcp_agent "github" "create an issue in\n    my-org/my-repo with the code review\n    findings as the body"`
+      code:`(pipe\n  (mcp_connect "github" "npx -y @modelcontextprotocol/server-github")\n  (read "pkg/agent/agent.go")\n  (codereview_focus "error handling" "2")\n  (mcp_agent "github" "create an issue in\n      my-org/my-repo with the code review\n      findings as the body"))`
     },
     {
       icon:'🔍',title:'Discover + Install Any MCP Server',
       desc:'Search the official MCP registry for any capability you need — databases, APIs, services. AgentScript finds it and gives you the connect command.',
       file:'mcp-search.as',
-      code:`// Find MCP servers for any use case\nmcp_search "home automation"\nmcp_search "postgres database"\nmcp_search "slack integration"\nmcp_search "kubernetes"\n\n// Install and connect in one step\nmcp_search_install "server-postgres"`
+      code:`; Find MCP servers for any use case\n(mcp_search "home automation")\n(mcp_search "postgres database")\n(mcp_search "slack integration")\n(mcp_search "kubernetes")\n\n; Install and connect in one step\n(mcp_search_install "server-postgres")`
     },
   ];
   return <section id="mcp" className="mcp-hero" style={{background:'var(--bg2)'}}>
@@ -639,10 +653,11 @@ function MCPEcosystem(){
           <div style={{flex:'1',minWidth:260,padding:'20px 24px',background:'var(--bg)',border:'1px solid var(--border)',borderRadius:10,textAlign:'left'}}>
             <div style={{fontFamily:'var(--mono)',fontSize:11,color:'var(--accent)',letterSpacing:1,textTransform:'uppercase',marginBottom:10}}>Then Use It Everywhere</div>
             <div style={{fontFamily:'var(--mono)',fontSize:12,lineHeight:1.8,color:'var(--text-mid)'}}>
-              <span style={{color:'var(--accent)'}}>my_cmd</span> <span style={{color:'var(--accent2)'}}>"input"</span><br/>
-              <span style={{color:'var(--accent3)'}}>&gt;=&gt;</span> <span style={{color:'var(--accent)'}}>summarize</span><br/>
-              <span style={{color:'var(--accent3)'}}>&gt;=&gt;</span> <span style={{color:'var(--accent)'}}>notify</span> <span style={{color:'var(--accent2)'}}>"slack"</span><br/>
-              <span style={{color:'var(--text-dim)'}}>// Works with AI, MCP, parallel...</span>
+              <span style={{color:'var(--accent3)'}}>(pipe</span><br/>
+              &nbsp;&nbsp;(<span style={{color:'var(--accent)'}}>my_cmd</span> <span style={{color:'var(--accent2)'}}>"input"</span>)<br/>
+              &nbsp;&nbsp;<span style={{color:'var(--accent)'}}>summarize</span><br/>
+              &nbsp;&nbsp;(<span style={{color:'var(--accent)'}}>notify</span> <span style={{color:'var(--accent2)'}}>"slack"</span>))<br/>
+              <span style={{color:'var(--text-dim)'}}>; Works with AI, MCP, parallel...</span>
             </div>
           </div>
         </div>
@@ -654,7 +669,7 @@ function MCPEcosystem(){
             publish, discover, and install community plugins with a single command.
           </span>
         </div>
-        <div className="mcp-cta-code" style={{marginTop:4}}>mcp_search "your-tool-here"</div>
+        <div className="mcp-cta-code" style={{marginTop:4}}>(mcp_search "your-tool-here")</div>
       </div>
     </div>
   </section>;
