@@ -1,0 +1,15 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editors
+.idea/
+.vscode/
+*.iml
+*.swp
+*~
+
+# AgentScript programs — these belong in the agentscript repo,
+# not the marketing site
+*.as
